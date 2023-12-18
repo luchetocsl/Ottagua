@@ -1,0 +1,45 @@
+---
+import ButtonMain from "./ButtonMain.astro";
+---
+
+<section>
+	<main>
+		<div class='hero'>
+			<h1>Encuentra tu gente en Ottawa</h1>
+			<p>
+				Descubre gente, negocios, eventos y tiendas de tu país en Ottawa
+				y Gatineau. Ottagua es la comunidad de gente latina en la
+				Capital de Canada.
+			</p>
+			<ButtonMain title='Únete a la lista de espera' link='/signup' />
+		</div>
+	</main>
+</section>
+
+<style>
+	section {
+		background-color: var(--red);
+		min-height: 60vh;
+		width: 100%;
+	}
+
+	main {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		height: 100%;
+	}
+
+	.hero {
+		color: var(--cream);
+		padding: 2rem;
+		max-width: 60%;
+		display: flex;
+		gap: 1.5rem;
+		flex-direction: column;
+	}
+
+	.hero p {
+		max-width: 50%;
+	}
+</style>

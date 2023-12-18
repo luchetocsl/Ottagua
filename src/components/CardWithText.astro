@@ -1,0 +1,57 @@
+---
+import ButtonSecondary from "./ButtonSecondary.astro";
+---
+
+<section>
+	<main>
+		<div class='image'></div>
+		<div class='text'>
+			<h2>Conectando a la comunidad latina en Ottawa - Gatineau</h2>
+			<p>
+				Nuestra misión es simple. Crear un espacio donde la comunidad
+				latina de Ottawa pueda compartir experiencias, noticias y
+				conocerse.
+			</p>
+			<ButtonSecondary
+				title='Únete a la lista de espera'
+				link='/signup'
+			/>
+		</div>
+	</main>
+</section>
+
+<style>
+	section {
+		background-color: var(--cream);
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+
+	main {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		flex: 1;
+	}
+
+	.image {
+		width: 50%;
+		display: block;
+	}
+
+	.text {
+		color: var(--dark-green);
+		width: 50%;
+		gap: 1.5rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.text p {
+		width: 60%;
+	}
+</style>

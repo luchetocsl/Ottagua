@@ -1,0 +1,27 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import Logo from "./../img/Ottagua-Logo.svg";
+---
+
+<header>
+	<div class='main'>
+		<nav>
+			<img src={Logo.src} alt='Ottagua Logo' />
+		</nav>
+	</div>
+</header>
+<style>
+	header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--red);
+		width: 100vw;
+		padding: 27px;
+	}
+
+	header img {
+		width: 100vw;
+	}
+</style>
