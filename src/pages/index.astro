@@ -1,10 +1,11 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import HeaderHome from "../components/HeaderHome.astro";
-import Hero from "../components/Hero.astro";
-import CardWithText from "../components/CardWithText.astro";
+import Hero from "../layouts/Hero.astro";
+import CardWithText from "../layouts/CardWithText.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Benefits from "../layouts/Benefits.astro";
 ---
 
 <!doctype html>
@@ -16,6 +17,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 		<HeaderHome title={SITE_TITLE} />
 		<Hero />
 		<CardWithText />
+		<Benefits />
 		<Footer />
 	</body>
 </html>

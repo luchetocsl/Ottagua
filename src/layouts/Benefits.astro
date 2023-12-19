@@ -1,0 +1,72 @@
+---
+import ButtonMain from "../components/ButtonMain.astro";
+import ListElement from "../components/ListElement.astro";
+import "remixicon/fonts/remixicon.css";
+---
+
+<section>
+	<main>
+		<div class='benefits'>
+			<h3>¿por qué suscribirse?</h3>
+
+			<ul>
+				<ListElement
+					icon='ri-mail-open-line'
+					text='Email semanal con noticias especialmente curadas para la comunidad latina'
+				/>
+				<ListElement
+					icon='ri-list-indefinite'
+					text='Directorio de negocios latinos'
+				/>
+				<ListElement
+					icon='ri-calendar-line'
+					text='Calendario de eventos'
+				/>
+				<ListElement
+					icon='ri-restaurant-line'
+					text='Recomendaciones de restaurantes'
+				/>
+				<ListElement
+					icon='ri-candle-line'
+					text='Eventos exclusivos donde podrás conocer a otros latinos en Ottawa'
+				/>
+				<ListElement
+					icon='ri-money-dollar-circle-line'
+					text='Es gratis'
+				/>
+			</ul>
+
+			<ButtonMain title='Únete a la lista de espera' link='/signup' />
+		</div>
+	</main>
+</section>
+
+<style>
+	main {
+		background-color: var(--red);
+		border-radius: 2rem;
+		padding: 3rem 0;
+		display: flex;
+		justify-content: center;
+		color: var(--cream);
+	}
+
+	.benefits {
+		width: 100%;
+		max-width: 24.444rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	h3 {
+		color: var(--cream);
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.button {
+		justify-self: center;
+		align-self: center;
+	}
+</style>

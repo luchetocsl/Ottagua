@@ -1,0 +1,25 @@
+---
+const { icon, text } = Astro.props;
+---
+
+<li>
+	<i class={icon}></i>
+	<span>{text}</span>
+</li>
+
+<style>
+	li {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	li i {
+		margin-right: 1.5rem;
+		font-size: 1.778rem;
+	}
+
+	li span {
+		font-size: 1rem;
+	}
+</style>

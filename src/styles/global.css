@@ -68,6 +68,11 @@ h2 {
 	line-height: 1.193;
 }
 
+h3 {
+	font-size: 2.389rem;
+	line-height: 1.5;
+}
+
 section {
 	padding: 4.778rem 0;
 	display: flex;
@@ -76,7 +81,7 @@ section {
 
 main {
 	width: 100%;
-	max-width: 80rem;
+	max-width: 75.5rem;
 
 	display: flex;
 }
