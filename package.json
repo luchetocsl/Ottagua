@@ -14,7 +14,7 @@
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.3",
     "@fontsource-variable/inter": "^5.0.16",
-    "astro": "^4.0.5",
+    "astro": "^4.0.6",
     "remixicon": "^4.0.1"
   }
 }
