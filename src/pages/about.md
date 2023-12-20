@@ -1,0 +1,17 @@
+---
+layout: ../layouts/PageLayout.astro
+---
+
+## Quién está detrás de Ottagua
+
+¡Hola!
+
+Bienvenidos a Ottagua, un proyecto que, aunque ahora soy su único responsable, pronto se convertirá en un esfuerzo colectivo lleno de talento y comunidad.
+
+Me llamo Luis Martínez y llegué a Ottawa hace dos años junto con mi familia (mi esposa y nuestro hijo). Desde mi llegada, aunque tuve la suerte de encontrar trabajo rápidamente, el tiempo para socializar y construir relaciones fue escaso. Pero este último año ha sido diferente: he tenido la oportunidad de conocer a más personas y descubrir eventos, negocios y restaurantes increíbles liderados por latinos en la capital de Canadá.
+
+Sin embargo, me di cuenta de que estar al tanto de lo que sucede en nuestra comunidad muchas veces depende de la casualidad. A veces me entero de eventos y oportunidades a través de publicaciones en Facebook o comentarios casuales de amigos.
+
+Creo que podemos mejorar eso. Por eso nace Ottagua: para ser ese espacio donde los latinos en Ottawa puedan compartir noticias, negocios, reseñas y mucho más. Es un lugar para encontrarnos, para conocernos, y para fortalecer nuestra presencia en esta hermosa ciudad.
+
+¡Te invito a unirte a Ottagua y a ser parte de esta emocionante aventura!
