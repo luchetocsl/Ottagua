@@ -5,7 +5,10 @@ import Logo from "./../assets/ottagua-logo.svg";
 
 <header>
 	<div class='main'>
-		<Image src={Logo} alt='Ottagua Logo' class='logo' />
+		<!-- <Image src={Logo} alt='Ottagua Logo' class='logo' /> -->
+		<object type='image/svg+xml' data='./ottagua-logo-home.svg'>
+			<img src='./ottagua-logo-home.svg' />
+		</object>
 		<nav></nav>
 	</div>
 </header>
@@ -15,6 +18,10 @@ import Logo from "./../assets/ottagua-logo.svg";
 		justify-content: center;
 		align-items: center;
 		background-color: var(--red);
+		width: 100vw;
+	}
+
+	object {
 		width: 100vw;
 	}
 
