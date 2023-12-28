@@ -54,7 +54,7 @@ import party from "./../assets/ottawa-party.jpg";
 	}
 
 	.text {
-		color: var(--dark-green);
+		color: var(--red);
 		max-width: 35.722rem;
 		gap: 1.5rem;
 		display: flex;
@@ -63,5 +63,29 @@ import party from "./../assets/ottawa-party.jpg";
 
 	.text p {
 		max-width: 24.444rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		section {
+			flex-direction: column;
+		}
+
+		main {
+			flex-direction: column;
+			padding: 0 1rem;
+		}
+
+		.image {
+			max-width: 100%;
+		}
+
+		img {
+			aspect-ratio: 1 / 1;
+			height: auto;
+		}
+
+		.text {
+			max-width: 100%;
+		}
 	}
 </style>

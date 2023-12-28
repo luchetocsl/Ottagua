@@ -1,14 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import Logo from "./../assets/ottagua-logo.svg";
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 ---
 
 <header>
 	<div class='main'>
-		<!-- <Image src={Logo} alt='Ottagua Logo' class='logo' /> -->
-		<object type='image/svg+xml' data='./ottagua-logo-home.svg'>
-			<img src='./ottagua-logo-home.svg' />
-		</object>
+		<div class='object'>
+			<LottieAnimation
+				src='/ottawa-animated-logo.json'
+				autoplay='visible'
+				loop='false'
+			/>
+		</div>
+
 		<nav></nav>
 	</div>
 </header>
@@ -21,12 +25,8 @@ import Logo from "./../assets/ottagua-logo.svg";
 		width: 100vw;
 	}
 
-	object {
+	.object {
 		width: 100vw;
-	}
-
-	header img {
-		width: 100%;
-		margin: 27px 0;
+		padding: 1.5rem 1rem;
 	}
 </style>

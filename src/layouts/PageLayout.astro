@@ -1,33 +1,28 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Footer from "../components/Footer.astro";
+import MainLayout from "./MainLayout.astro";
 ---
 
-<!doctype html>
-<html lang='es'>
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<section>
-			<main>
-				<slot />
-			</main>
-		</section>
+<MainLayout>
+	<section>
+		<main>
+			<slot />
+		</main>
+	</section>
+</MainLayout>
 
-		<Footer />
-		<style>
-			section {
-				color: var(--red);
-			}
-			main {
-				flex-direction: column;
-				gap: 1rem;
-				max-width: 50rem;
-			}
-		</style>
-	</body>
-</html>
+<style>
+	section {
+		color: var(--red);
+	}
+	main {
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 50ch;
+	}
+	@media screen and (max-width: 600px) {
+		main {
+			max-width: 100%;
+			padding: 0 1rem;
+		}
+	}
+</style>

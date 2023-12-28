@@ -4,30 +4,42 @@ const today = new Date();
 
 <footer>
 	<div class='links'>
+		<p>&copy; {today.getFullYear()} Ottagua. All rights reserved.</p>
+
 		<a href='/signup/'>Suscribete</a>
 		<a href='/about/'>Sobre Ottagua</a>
 	</div>
-
-	<p>&copy; {today.getFullYear()} Ottagua. All rights reserved.</p>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
+		background-color: var(--green);
 		display: flex;
+		flex-direction: column;
+		border-radius: 2rem 2rem 0 0;
+		padding: 1rem 0;
+		align-items: center;
+		font-size: 0.778rem;
+		color: var(--dark-green);
+	}
+
+	.links {
+		display: flex;
+		flex-direction: row;
 		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
+		width: 100%;
+		gap: 1.5rem;
 	}
-	.social-links a {
+
+	.links a {
+		color: var(--dark-green);
 		text-decoration: none;
-		color: rgb(var(--gray));
 	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
+
+	@media screen and (max-width: 600px) {
+		.links {
+			flex-direction: column-reverse;
+			gap: 0.5rem;
+			align-items: center;
+		}
 	}
 </style>

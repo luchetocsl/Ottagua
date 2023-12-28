@@ -14,6 +14,8 @@ body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	font-family: "Inter Variable", sans-serif;
+	background-color: var(--cream);
+	max-width: 2200px;
 }
 img,
 picture,
@@ -54,8 +56,9 @@ h6 {
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%),
 		0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
 	--red: #f80b01;
-	--cream: #f1f5e7;
+	--cream: #f2f4e8;
 	--dark-green: #083d20;
+	--green: #dcea5e;
 }
 
 h1 {
@@ -82,6 +85,30 @@ section {
 main {
 	width: 100%;
 	max-width: 75.5rem;
-
 	display: flex;
 }
+
+ul {
+	padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+
+	h1 {
+		font-size: 2.998rem;
+		line-height: 1.2;
+	}
+
+	h2 {
+		font-size: 2.074rem;
+		line-height: 1.2;
+	}
+
+	section {
+		min-height: 10vh;
+		padding: 2rem 0;
+	}
+
+	.main-text {
+		max-width: 60px;
+	}
