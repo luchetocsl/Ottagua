@@ -3,8 +3,19 @@
 ---
 
 <div class='signup'>
-	<div class='iframecontainer'>
+	<div>
 		<h3>Ùnete a la lista de espera</h3>
+		<p>
+			Por el momento, tengo pensado escribir sobre noticias que afecten
+			nuestra inmigración, eventos organizados por la comunidad o por las
+			embajadas de nuestros países -- en algún momento me gustaría incluir
+			ofertas de empleo, torneos deportivos, fiestas pero mi intención es
+			que armemos esta comunidad entre todos. Por eso, estoy abierto a
+			todas las sugerencias.
+		</p>
+	</div>
+
+	<div class='iframecontainer'>
 		<iframe
 			data-tally-src='https://tally.so/embed/wz7lGR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
 			loading='lazy'
@@ -15,15 +26,6 @@
 			marginwidth='0'
 			title='Suscribete a Ottagua'>
 		</iframe>
-
-		<p>
-			Por el momento, tengo pensado escribir sobre noticias que afecten
-			nuestra inmigración, eventos organizados por la comunidad o por las
-			embajadas de nuestros países -- en algún momento me gustaría incluir
-			ofertas de empleo, torneos deportivos, fiestas pero mi intención es
-			que armemos esta comunidad entre todos. Por eso, estoy abierto a
-			todas las sugerencias.
-		</p>
 	</div>
 </div>
 
@@ -31,7 +33,7 @@
 	.signup {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		width: 100%;
 	}
 
@@ -49,10 +51,8 @@
 	}
 
 	.iframecontainer {
-		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 		padding: 2rem;
 		align-self: center;
-		width: 100%;
 		max-width: 50rem;
 		border-radius: 20px;
 	}
