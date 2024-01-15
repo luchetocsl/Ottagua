@@ -7,12 +7,21 @@ import MainLayout from "./MainLayout.astro";
 		<main>
 			<slot />
 		</main>
+
+		<sidebar>
+			<slot name='sidebar' />
+		</sidebar>
 	</section>
 </MainLayout>
 
 <style>
 	section {
 		color: var(--red);
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		direction: column;
+		gap: 2rem;
 	}
 	main {
 		flex-direction: column;
@@ -24,5 +33,12 @@ import MainLayout from "./MainLayout.astro";
 			max-width: 100%;
 			padding: 0 1rem;
 		}
+	}
+
+	.sidebar {
+		display: flex;
+		flex-direction: column;
+		max-width: 600px;
+		width: 100%;
 	}
 </style>

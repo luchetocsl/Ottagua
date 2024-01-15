@@ -4,10 +4,15 @@ import Logo from "./../assets/ottagua-logo.svg";
 ---
 
 <header>
-	<div class='main'>
+	<main>
 		<a href='/'><Image src={Logo} alt='Ottagua Logo' /></a>
-		<nav></nav>
-	</div>
+		<nav>
+			<ul>
+				<li><a href='/company'>Empresas</a></li>
+				<li><a href='/#signup'>Suscribete</a></li>
+			</ul>
+		</nav>
+	</main>
 </header>
 <style>
 	header {
@@ -22,5 +27,23 @@ import Logo from "./../assets/ottagua-logo.svg";
 	header img {
 		width: 150px;
 		height: auto;
+	}
+
+	main {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	nav ul {
+		list-style: none;
+		display: flex;
+		gap: 1rem;
+	}
+
+	li a {
+		color: var(--cream);
+		text-decoration: none;
 	}
 </style>

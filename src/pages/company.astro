@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/PageLayout.astro";
+---
+
+<BaseLayout title='Company'>
+	<div class='info'>
+		<h2>¿Tienes una empresa latina en Ottawa?</h2>
+		<p>
+			Toda via no tengo claros todos los detalles. Por ahora, solo estoy
+			recolectando los datos para crear un directorio de negocios latinos
+			en Ottawa.
+		</p>
+		<p>
+			Si tienes un negocio que quieras que aparezca en el directorio
+			cuando haga el lanzamiento por favor deja los datos en este
+			formiulario.
+		</p>
+	</div>
+
+	<div class='sidebar' slot='sidebar'>
+		<iframe
+			data-tally-src='https://tally.so/embed/nGloXe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
+			loading='lazy'
+			width='100%'
+			height='600'
+			frameborder='0'
+			marginheight='0'
+			marginwidth='0'
+			title='Directorio Empresas Ottagua'></iframe>
+	</div>
+</BaseLayout>
+
+<style>
+	.sidebar {
+		width: 100%;
+	}
+
+	.sidebar iframe {
+		width: 100%;
+	}
+</style>
+
+<script>
+	var d = document,
+		w = "https://tally.so/widgets/embed.js",
+		v = function () {
+			"undefined" != typeof Tally
+				? Tally.loadEmbeds()
+				: d
+						.querySelectorAll("iframe[data-tally-src]:not([src])")
+						.forEach(function (e) {
+							e.src = e.dataset.tallySrc;
+						});
+		};
+	if ("undefined" != typeof Tally) v();
+	else if (d.querySelector('script[src="' + w + '"]') == null) {
+		var s = d.createElement("script");
+		(s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
+	}
+</script>
