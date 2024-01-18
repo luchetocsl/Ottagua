@@ -1,42 +1,91 @@
 ---
-import BaseLayout from "../layouts/PageLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<BaseLayout title='Company'>
-	<div class='info'>
-		<h2>¿Tienes una empresa latina en Ottawa?</h2>
-		<p>
-			Toda via no tengo claros todos los detalles. Por ahora, solo estoy
-			recolectando los datos para crear un directorio de negocios latinos
-			en Ottawa.
-		</p>
-		<p>
-			Si tienes un negocio que quieras que aparezca en el directorio
-			cuando haga el lanzamiento por favor deja los datos en este
-			formiulario.
-		</p>
-	</div>
+<MainLayout>
+	<div class='company'>
+		<main>
+			<h2>¿Tienes una empresa latina en Ottawa?</h2>
+		</main>
 
-	<div class='sidebar' slot='sidebar'>
-		<iframe
-			data-tally-src='https://tally.so/embed/nGloXe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
-			loading='lazy'
-			width='100%'
-			height='600'
-			frameborder='0'
-			marginheight='0'
-			marginwidth='0'
-			title='Directorio Empresas Ottagua'></iframe>
+		<main>
+			<div class='info'>
+				<p>
+					Todavia no tengo claros todos los detalles. Por ahora, solo
+					estoy recolectando los datos para crear un directorio de
+					negocios latinos en Ottawa.
+				</p>
+				<p>
+					Si tienes un negocio que quieras que aparezca en el
+					directorio cuando haga el lanzamiento por favor deja los
+					datos en este formiulario.
+				</p>
+			</div>
+			<div class='iframecontainer'>
+				<iframe
+					data-tally-src='https://tally.so/embed/nGloXe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
+					loading='lazy'
+					width='100%'
+					height='600'
+					frameborder='0'
+					marginheight='0'
+					marginwidth='0'
+					title='Directorio Empresas Ottagua'></iframe>
+			</div>
+		</main>
 	</div>
-</BaseLayout>
+</MainLayout>
 
 <style>
-	.sidebar {
-		width: 100%;
+	.company {
+		color: var(--red);
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 2rem;
+		max-width: 75.5rem;
 	}
 
-	.sidebar iframe {
-		width: 100%;
+	main {
+		display: flex;
+		flex-direction: row;
+		align-items: top;
+		justify-content: center;
+		flex: 1;
+		gap: 1.5rem;
+	}
+
+	h2 {
+		text-align: center;
+		margin-bottom: 2rem;
+		color: var(--red);
+	}
+
+	p {
+		margin-bottom: 1rem;
+		color: var(--red);
+		max-width: 24.444rem;
+	}
+
+	.iframecontainer {
+		align-self: center;
+		max-width: 50rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		main {
+			flex-direction: column;
+			gap: 0;
+		}
+
+		h2 {
+			margin-bottom: 1rem;
+		}
+
+		.iframecontainer {
+			width: 100%;
+		}
 	}
 </style>
 

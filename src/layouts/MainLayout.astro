@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+const { title } = Astro.props;
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -18,10 +19,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	<body>
 		<Header title={SITE_TITLE} />
 		<section>
-			<main>
-				<slot />
-			</main>
+			<slot />
 		</section>
 		<Footer />
+		<style>
+			@media screen and (max-width: 600px) {
+				section {
+					margin-top: 100px;
+				}
+			}
+		</style>
 	</body>
 </html>

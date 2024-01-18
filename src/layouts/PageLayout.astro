@@ -7,10 +7,6 @@ import MainLayout from "./MainLayout.astro";
 		<main>
 			<slot />
 		</main>
-
-		<sidebar>
-			<slot name='sidebar' />
-		</sidebar>
 	</section>
 </MainLayout>
 
@@ -23,11 +19,13 @@ import MainLayout from "./MainLayout.astro";
 		direction: column;
 		gap: 2rem;
 	}
+
 	main {
 		flex-direction: column;
-		gap: 1rem;
+		gap: 2rem;
 		max-width: 50ch;
 	}
+
 	@media screen and (max-width: 600px) {
 		main {
 			max-width: 100%;

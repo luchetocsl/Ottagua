@@ -3,11 +3,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 import BaseHead from "../components/BaseHead.astro";
 import HeaderHome from "../components/HeaderHome.astro";
-import Header from "../components/Header.astro";
 import Hero from "../layouts/Hero.astro";
 import CardWithText from "../layouts/CardWithText.astro";
 import Footer from "../components/Footer.astro";
-import SignupForm from "../components/SignupForm.astro";
+import SignupForm from "../layouts/SignupForm.astro";
 import Benefits from "../layouts/Benefits.astro";
 ---
 
@@ -17,8 +16,7 @@ import Benefits from "../layouts/Benefits.astro";
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<HeaderHome />
-		<Header />
+		<HeaderHome class='box' />
 		<Hero />
 		<CardWithText />
 		<Benefits />

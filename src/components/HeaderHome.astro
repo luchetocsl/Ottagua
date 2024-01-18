@@ -1,8 +1,9 @@
 ---
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+import Header from "./Header.astro";
 ---
 
-<header>
+<header class='box'>
 	<div class='main'>
 		<div class='object'>
 			<LottieAnimation
@@ -11,17 +12,20 @@ import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 				loop='false'
 			/>
 		</div>
-
-		<nav></nav>
 	</div>
 </header>
+
+<Header />
+
 <style>
 	header {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: var(--cream);
 		width: 100vw;
+		opacity: 0;
+		background-color: var(--cream);
+		z-index: 2;
 	}
 
 	.object {
@@ -29,3 +33,25 @@ import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 		padding: 1.5rem 1rem;
 	}
 </style>
+
+<script>
+	gsap.from(".box", {
+		scrollTrigger: {
+			trigger: ".box",
+			start: "top top",
+			end: "+=100",
+			scrub: 1,
+		},
+		opacity: 1,
+	});
+
+	gsap.from(".nav-header", {
+		scrollTrigger: {
+			trigger: ".box",
+			start: "top top",
+			end: "+=100",
+			scrub: 1,
+		},
+		opacity: 0,
+	});
+</script>
