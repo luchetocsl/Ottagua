@@ -6,8 +6,11 @@ const today = new Date();
 	<div class='links'>
 		<p>&copy; {today.getFullYear()} Ottagua. All rights reserved.</p>
 
-		<a href='/#signup'>Suscribete</a>
-		<a href='/about/'>Sobre Ottagua</a>
+		<div class='footer-links'>
+			<a href='/#signup'>Suscribete</a>
+			<a href='/about/'>Sobre Ottagua</a>
+			<a href='/help/'>Coopera con Ottagua</a>
+		</div>
 	</div>
 </footer>
 <style>
@@ -25,7 +28,7 @@ const today = new Date();
 	.links {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: space-around;
 		width: 100%;
 		gap: 1.5rem;
 	}
@@ -33,6 +36,12 @@ const today = new Date();
 	.links a {
 		color: var(--cream);
 		text-decoration: none;
+	}
+
+	.footer-links {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
 	}
 
 	@media screen and (max-width: 600px) {

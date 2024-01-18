@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<BaseLayout>
+	<section>
+		<main>
+			<slot />
+		</main>
+	</section>
+</BaseLayout>
+
+<style>
+	main {
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		main {
+			max-width: 100%;
+			padding: 0 1rem;
+		}
+	}
+</style>
