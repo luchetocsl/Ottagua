@@ -2,14 +2,13 @@
 import ButtonSecondary from "../../components/ButtonSecondary.astro";
 
 import { Image } from "astro:assets";
-import party from "./../../assets/ottawa-party.jpg";
-
+import city from "./../../assets/ottawa-parliament.jpg";
 ---
 
 <section>
 	<main>
 		<div class='image'>
-			<Image src={party} alt='A party In Ottawa' />
+			<Image src={city} alt='Image by DEZALB from Pixabay' />
 		</div>
 		<div class='text'>
 			<h2>Conectando a la comunidad latina en Ottawa - Gatineau</h2>
@@ -20,7 +19,7 @@ import party from "./../../assets/ottawa-party.jpg";
 			</p>
 			<ButtonSecondary
 				title='Únete a la lista de espera'
-				link='/signup'
+				link='/#signup'
 			/>
 		</div>
 	</main>

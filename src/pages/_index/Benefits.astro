@@ -1,13 +1,35 @@
 ---
 import ButtonMain from "../../components/ButtonMain.astro";
+import ButtonSecondary from "../../components/ButtonSecondary.astro";
 import ListElement from "../../components/ListElement.astro";
 import "remixicon/fonts/remixicon.css";
 ---
 
 <section>
+	<h3>¿por qué suscribirse?</h3>
 	<main>
-		<h3>¿por qué suscribirse?</h3>
+		<div class='company'>
+			<h4>Empresas</h4>
+			<ul>
+				<li>Anuncia tus eventos a una comunidad cautiva</li>
+				<li>
+					Forma parte del directorio de empresas de Ottagua
+					(próximamente)
+				</li>
+				<li>Crea oportunidades de networking</li>
+				<li>Es gratis</li>
+				<li>Forma parte de Ottagua</li>
+			</ul>
+			<p>
+				Aún estamos definiendo paraguas de servicios de Ottagua. La idea
+				principal es crear un espacio donde los negocios y suscriptores
+				sepan que esta pasando con la comunidad latina de Ottawa
+			</p>
+			<a href='/company'>Leer más</a>
+		</div>
+
 		<div class='benefits'>
+			<h4>Suscriptores</h4>
 			<ul>
 				<ListElement
 					icon='ri-mail-open-line'
@@ -34,19 +56,41 @@ import "remixicon/fonts/remixicon.css";
 					text='Es gratis'
 				/>
 			</ul>
+			<ButtonMain title='Únete a la lista de espera' link='/#signup' />
 		</div>
 	</main>
 </section>
 
 <style>
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--light-red);
+	}
+
 	main {
-		background-color: var(--red);
-		border-radius: 2rem;
 		padding: 3rem 3rem;
 		display: flex;
 		justify-content: center;
-		color: var(--cream);
-		gap: 2rem
+		color: var(--red);
+		align-items: center;
+	}
+
+	.company {
+		width: 100%;
+		max-width: 24.444rem;
+		border-radius: 2rem;
+		padding: 2rem 2rem;
+
+		p {
+			font-size: 0.75rem;
+			margin-top: 2rem;
+		}
+		ul li {
+			margin-bottom: 0.5rem;
+		}
 	}
 
 	.benefits {
@@ -55,14 +99,21 @@ import "remixicon/fonts/remixicon.css";
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		background-color: var(--cream);
+		border: 0.5rem solid var(--red);
+		border-radius: 2rem;
+		padding: 2rem 2rem;
 	}
 
 	h3 {
-		color: var(--cream);
+		color: var(--red);
 		text-align: left;
 		margin-bottom: 2rem;
 	}
 
+	h4 {
+		margin-bottom: 2rem;
+	}
 	.button {
 		justify-self: center;
 		align-self: center;
