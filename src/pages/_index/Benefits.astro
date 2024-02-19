@@ -6,7 +6,7 @@ import "remixicon/fonts/remixicon.css";
 ---
 
 <section>
-	<h3>¿por qué suscribirse?</h3>
+	<h3>¿Por qué suscribirse?</h3>
 	<main>
 		<div class='company'>
 			<h4>Empresas</h4>
@@ -33,7 +33,7 @@ import "remixicon/fonts/remixicon.css";
 			<ul>
 				<ListElement
 					icon='ri-mail-open-line'
-					text='Email semanal con noticias especialmente curadas para la comunidad latina'
+					text='Email cada dos semanas con noticias especialmente curadas para la comunidad latina'
 				/>
 				<ListElement
 					icon='ri-list-indefinite'
@@ -119,9 +119,14 @@ import "remixicon/fonts/remixicon.css";
 		align-self: center;
 	}
 
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 800px) {
 		main {
-			flex-direction: column;
+			flex-direction: column-reverse;
+			padding: 0 1rem;
+		}
+
+		.company {
+			padding: 2rem 0;
 		}
 	}
 </style>
