@@ -11,6 +11,6 @@ import keystatic from "@keystatic/astro";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://ottagua.com",
-	output: "hybrid",
+	output: "local",
 	integrations: [lottie(), mdx(), sitemap(), react(), markdoc(), keystatic()],
 });
