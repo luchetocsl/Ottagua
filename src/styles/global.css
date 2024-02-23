@@ -96,6 +96,7 @@ main {
 	width: 100%;
 	max-width: 75.5rem;
 	display: flex;
+	flex-direction: column;
 	padding: 0 1rem;
 }
 

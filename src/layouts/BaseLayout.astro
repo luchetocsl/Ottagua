@@ -15,13 +15,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 			data-website-id='fad6b1ad-7108-4b7c-85dc-684494724cee'></script>
 
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<section>
-			<slot />
-		</section>
-		<Footer />
+
 		<style>
 			@media screen and (max-width: 600px) {
 				section {
@@ -29,5 +23,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 				}
 			}
 		</style>
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		<section>
+			<slot />
+		</section>
+		<Footer />
 	</body>
 </html>
