@@ -6,6 +6,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [lottie()],
 	site: "https://ottagua.com",
+	integrations: [lottie(), mdx(), sitemap()],
 });
