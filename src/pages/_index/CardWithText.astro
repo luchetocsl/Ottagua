@@ -11,15 +11,21 @@ import city from "./../../assets/ottawa-parliament.jpg";
 			<Image src={city} alt='Image by DEZALB from Pixabay' />
 		</div>
 		<div class='text'>
-			<h2>Conectando a la comunidad latina en Ottawa - Gatineau</h2>
+			<h2>
+				Todo lo que me hubiera gustado saber antes de mudarme a Ottawa
+			</h2>
 			<p>
-				¡Bienvenidos a Ottagua! Un espacio donde la comunidad latina de
-				Ottawa pueda compartir experiencias, noticias y conocerse.
+				<b
+					>Descubre cómo sobrevivir al frío, qué hacer los fines de
+					semana, y cómo encontrar un equipo de fútbol en Ottawa.</b
+				>
 			</p>
-			<ButtonSecondary
-				title='Únete a la lista de espera'
-				link='/#signup'
-			/>
+			<p>
+				Cada semana, comparto los tips y trucos que he aprendido (y los
+				que me han dado) para disfrutar al máximo la vida en la capital
+				de Canadá.
+			</p>
+			<ButtonSecondary title='Suscríbete' link='/#signup' />
 		</div>
 	</main>
 </section>
@@ -44,18 +50,21 @@ import city from "./../../assets/ottawa-parliament.jpg";
 	}
 
 	.image {
-		max-width: 35.722rem;
-		display: block;
+		aspect-ratio: 1;
+		display: flex;
+		align-items: center;
 	}
 
 	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 		border-radius: 20px;
 	}
 
 	.text {
 		color: var(--red);
 		max-width: 35.722rem;
-		gap: 2rem;
 		display: flex;
 		flex-direction: column;
 	}

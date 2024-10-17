@@ -67,13 +67,15 @@ h6 {
 }
 
 h1 {
-	font-size: 5.611rem;
-	line-height: 1.069;
+	font-size: 4.611rem;
+	line-height: 0.9;
 }
 
 h2 {
 	font-size: 3.167rem;
-	line-height: 1.193;
+	line-height: 1;
+
+	margin-bottom: 1rem;
 }
 
 h3 {
@@ -117,12 +119,12 @@ a {
 @media screen and (max-width: 600px) {
 	h1 {
 		font-size: 2.998rem;
-		line-height: 1.2;
+		line-height: 1;
 	}
 
 	h2 {
 		font-size: 2.074rem;
-		line-height: 1.2;
+		line-height: 1;
 	}
 
 	section {

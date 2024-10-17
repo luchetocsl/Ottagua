@@ -3,9 +3,10 @@ const { title, link } = Astro.props;
 import "remixicon/fonts/remixicon.css";
 ---
 
-<a href={link} class:list={["button"]}
-	>{title} <i class='ri-arrow-right-up-line'></i></a
->
+<a href={link} class:list={["button"]}>
+	{title}
+	<i class='ri-arrow-right-up-line'></i>
+</a>
 
 <style>
 	.button {
@@ -14,7 +15,6 @@ import "remixicon/fonts/remixicon.css";
 		border-radius: 2rem;
 		text-decoration: none;
 		color: var(--cream);
-		margin: 1rem 0;
 		display: inline-block;
 		font-size: 1rem;
 		width: fit-content;

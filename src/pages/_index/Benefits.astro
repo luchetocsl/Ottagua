@@ -6,6 +6,7 @@ import "remixicon/fonts/remixicon.css";
 
 <section>
 	<h3>¿Por qué suscribirse?</h3>
+
 	<main>
 		<div class='company'>
 			<h4>Empresas</h4>
@@ -26,7 +27,7 @@ import "remixicon/fonts/remixicon.css";
 			<ul>
 				<ListElement
 					icon='ri-mail-open-line'
-					text='Email semanal con noticias seleccionadas para la comunidad latina'
+					text='Consejos para pasarla lo mejor posible en Ottawa'
 				/>
 				<ListElement
 					icon='ri-list-indefinite'
@@ -45,7 +46,7 @@ import "remixicon/fonts/remixicon.css";
 					text='Es gratis'
 				/>
 			</ul>
-			<ButtonMain title='Únete a la lista de espera' link='/#signup' />
+			<ButtonMain title='Suscríbete' link='/#signup' />
 		</div>
 	</main>
 </section>
@@ -79,6 +80,7 @@ import "remixicon/fonts/remixicon.css";
 		}
 		ul li {
 			margin-bottom: 0.5rem;
+			margin-left: 1rem;
 		}
 	}
 
@@ -98,6 +100,10 @@ import "remixicon/fonts/remixicon.css";
 		color: var(--red);
 		text-align: left;
 		margin-bottom: 2rem;
+
+		@media screen and (max-width: 800px) {
+			text-align: center;
+		}
 	}
 
 	h4 {

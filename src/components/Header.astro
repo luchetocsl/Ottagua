@@ -1,6 +1,4 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
 import { Image } from "astro:assets";
 import Logo from "./../assets/ottagua-logo.svg";
 ---
@@ -12,56 +10,67 @@ import Logo from "./../assets/ottagua-logo.svg";
 		</a>
 		<nav>
 			<ul>
-				<li><a href='/company'>Empresas</a></li>
-				<li><a href='/#signup'>Suscribete</a></li>
+				<li>
+					<a href='https://archive.ottagua.com/'>Posts Pasados</a>
+				</li>
+				<li class='main-cta'>
+					<a href='/#signup'>Suscríbete</a>
+				</li>
 			</ul>
 		</nav>
 	</main>
-</header>
 
-<style>
-	header {
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		background-color: var(--red);
-		width: 100vw;
-		padding: 1rem;
-		position: fixed;
-		top: 0;
-		z-index: 1;
-		box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-		border-radius: 0 0 2rem 2rem;
-	}
+	<style>
+		header {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			background-color: var(--red);
+			width: 100vw;
+			padding: 1rem;
+			position: fixed;
+			top: 0;
+			z-index: 1;
+			box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+			border-radius: 0 0 2rem 2rem;
+		}
 
-	header img {
-		width: 150px;
-		height: auto;
-	}
+		header img {
+			width: 150px;
+			height: auto;
+		}
 
-	main {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		flex-direction: row;
-	}
-
-	nav ul {
-		list-style: none;
-		display: flex;
-		gap: 1rem;
-	}
-
-	li a {
-		color: var(--cream);
-		text-decoration: none;
-	}
-
-	@media screen and (max-width: 600px) {
 		main {
-			flex-direction: column;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			flex-direction: row;
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
 			gap: 1rem;
 		}
-	}
-</style>
+
+		li a {
+			color: var(--cream);
+			text-decoration: none;
+		}
+
+		li.main-cta a {
+			background-color: var(--cream);
+			padding: 0.5rem 1rem;
+			border-radius: 2rem;
+			color: var(--red);
+		}
+
+		@media screen and (max-width: 600px) {
+			main {
+				flex-direction: column;
+				gap: 1rem;
+			}
+		}
+	</style>
+</header>
