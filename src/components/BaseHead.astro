@@ -68,6 +68,19 @@ const { title, description, image = "/ottagua-social2.jpg" } = Astro.props;
 </script>
 <!-- End Google Tag Manager -->
 
+<!-- Google tag (gtag.js) -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=G-R93TN13NCC'
+></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("js", new Date());
+
+	gtag("config", "G-R93TN13NCC");
+</script>
+
 <!-- Umami -->
 <script
 	defer
