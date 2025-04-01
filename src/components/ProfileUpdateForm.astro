@@ -1,0 +1,276 @@
+---
+const { PLUNK_API_KEY } = Astro.props;
+---
+
+<div class="profile-section">
+  <div class="two-columns">
+    <div class='info'>
+      <h2>Personaliza tu perfil</h2>
+      <p>
+        Ahora formas parte de la comunidad latina de Ottawa. Te enviaremos las
+        últimas noticias, eventos y recomendaciones directamente a tu correo.
+      </p>
+      <p>
+        Puedes agregar más información para recibir contenido más relevante.
+      </p>
+    </div>
+
+    <div class='form-container'>
+      <form class='profile-form' id="profile-form">
+        <input type="hidden" name="event" value="profile_update" />
+        <div class='form-group'>
+          <label for='email'>Correo electrónico</label>
+          <input type='email' name='email' id='email' placeholder='tu@email.com' required />
+        </div>
+        <div class='form-group'>
+          <label for='name'>Nombre completo</label>
+          <input type='text' name='name' id='name' placeholder='Tu nombre' />
+        </div>
+        <div class='form-group'>
+          <label for='nationality'>Nacionalidad</label>
+          <select name='nationality' id='nationality'>
+            <option value="">Selecciona tu país</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Chile">Chile</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="España">España</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Honduras">Honduras</option>
+            <option value="México">México</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Perú">Perú</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+            <option value="República Dominicana">República Dominicana</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <button type='submit' class='submit-button'>Actualizar perfil</button>
+        <div id="profile-form-message" class="form-message"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .profile-section {
+    width: 100%;
+    max-width: 75.5rem;
+    padding: 2rem 0;
+    margin: 0 auto;
+  }
+  
+  .two-columns {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  .info {
+    padding-right: 1rem;
+    max-width: 30rem;
+    width: 100%;
+  }
+  
+  .info h2 {
+    margin-bottom: 1rem;
+    color: var(--red);
+    font-size: 1.75rem;
+  }
+  
+  .info p {
+    margin-bottom: 1rem;
+    color: var(--red);
+    line-height: 1.8;
+    font-size: 1.125rem;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 30rem;
+  }
+  
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--cream);
+    border-radius: 0.75rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    font-size: var(--font-sm);
+    color: var(--red);
+    margin-left: 0.5rem;
+  }
+  
+  .profile-form input,
+  .profile-form select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--red);
+    border-radius: 0.75rem;
+    font-size: var(--font-sm);
+    outline: none;
+    transition: border-color 0.2s ease;
+    color: var(--red);
+    background-color: var(--cream);
+    width: 100%;
+    max-height: 2.5rem;
+  }
+  
+  .profile-form input:focus,
+  .profile-form select:focus {
+    border-color: var(--red-accent);
+  }
+  
+  .submit-button {
+    background-color: var(--red);
+    color: var(--cream);
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  
+  .submit-button:hover {
+    background-color: var(--red-accent);
+  }
+  
+  .form-message {
+    margin-top: 1rem;
+    font-weight: 500;
+    height: 1.5rem;
+    color: var(--red);
+    font-size: var(--font-xs);
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .two-columns {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .info {
+      padding-right: 0;
+      max-width: 100%;
+    }
+    
+    .form-container {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<!-- Form submission script -->
+<script define:vars={{ PLUNK_API_KEY }}>
+  // @ts-ignore - Adding property to window
+  window.PLUNK_API_KEY = PLUNK_API_KEY;
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('profile-form') as HTMLFormElement;
+    const messageDiv = document.getElementById('profile-form-message');
+    
+    if (!form || !messageDiv) return;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Check if email is provided
+      const emailValue = form.email.value;
+      if (!emailValue) {
+        messageDiv.textContent = 'Error: El correo electrónico es requerido';
+        messageDiv.style.color = 'var(--red-accent)';
+        return;
+      }
+      
+      // Get form values
+      const email = emailValue.toString();
+      const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
+      const nationality = (form.elements.namedItem('nationality') as HTMLSelectElement)?.value || '';
+      
+      // Prepare data for Plunk API
+      const requestData = {
+        event: 'profile_update',
+        email: email,
+        subscribed: true,
+        data: {
+          name: name,
+          nationality: nationality
+        }
+      };
+      
+      try {
+        // Send the request to update profile
+        const response = await fetch('https://api.useplunk.com/v1/track', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // @ts-ignore - Using window property
+            'Authorization': `Bearer ${window.PLUNK_API_KEY || ''}`
+          },
+          body: JSON.stringify(requestData)
+        });
+        
+        if (response.ok) {
+          // Success
+          messageDiv.textContent = '¡Perfil actualizado con éxito!';
+          messageDiv.style.color = 'var(--red)';
+          
+          // Clear form fields except email
+          (form.elements.namedItem('name') as HTMLInputElement).value = '';
+          (form.elements.namedItem('nationality') as HTMLSelectElement).value = '';
+        } else {
+          // Handle error
+          const errorData = await response.json();
+          console.error('Update error:', errorData);
+          
+          // Show user-friendly error message
+          if (errorData.message && errorData.message.includes('Email is required')) {
+            messageDiv.textContent = 'Error: El correo electrónico es requerido';
+          } else {
+            messageDiv.textContent = `Error: ${errorData.message || 'Hubo un problema al actualizar tu perfil'}`;
+          }
+          messageDiv.style.color = 'var(--red-accent)';
+        }
+      } catch (error) {
+        // Handle network errors
+        messageDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo más tarde.';
+        messageDiv.style.color = 'var(--red-accent)';
+        console.error('Update error:', error);
+      }
+    });
+  });
+</script>

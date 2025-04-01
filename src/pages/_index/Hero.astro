@@ -3,6 +3,13 @@
 const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 ---
 
+<!-- Replace the API key placeholder in the script -->
+<script define:vars={{ PLUNK_API_KEY }}>
+  // Make the API key available to the script
+  // @ts-ignore - Adding property to window
+  window.PLUNK_API_KEY = PLUNK_API_KEY;
+</script>
+
 <section>
 	<main>
 		<div class='hero'>
@@ -11,14 +18,14 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 				Suscríbete al único newsletter con todo lo que necesitas saber
 				para sobrevivir a la Capital de Canadá.
 			</p>
-			<form class="hero-signup-form" action="https://api.useplunk.com/v1/track" method="post">
+			<form class="hero-signup-form" id="hero-form">
 				<input type="hidden" name="event" value="subscription" />
 				<input type="hidden" name="redirect" value="/"/>
-				<input type="hidden" name="api_key" value={PLUNK_API_KEY} />
 				<div class="form-input-group">
 					<input type="email" name="email" placeholder="tu@email.com" required />
 					<button type="submit" class="submit-button">Suscríbete <i class='ri-arrow-right-up-line'></i></button>
 				</div>
+				<div id="hero-form-message" class="form-message"></div>
 			</form>
 		</div>
 	</main>
@@ -119,6 +126,83 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 		}
 	}
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('hero-form') as HTMLFormElement;
+    const messageDiv = document.getElementById('hero-form-message');
+    
+    if (!form || !messageDiv) return;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form);
+      // @ts-ignore - Using window property
+      formData.append('api_key', window.PLUNK_API_KEY || '');
+      
+      // Check if email is provided
+      const emailValue = formData.get('email');
+      if (!emailValue) {
+        messageDiv.textContent = 'Error: El correo electrónico es requerido';
+        messageDiv.style.color = 'var(--red-accent)';
+        return;
+      }
+      
+      // Get email from form as string
+      const email = emailValue.toString();
+      
+      // Prepare data in the format expected by Plunk API
+      const requestData = {
+        event: 'subscription',
+        email: email,
+        subscribed: true,
+        data: {}
+      };
+      
+      try {
+        // Send the request with proper headers as per Plunk API docs
+        const response = await fetch('https://api.useplunk.com/v1/track', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // @ts-ignore - Using window property
+            'Authorization': `Bearer ${window.PLUNK_API_KEY || ''}`
+          },
+          body: JSON.stringify(requestData)
+        });
+        
+        if (response.ok) {
+          // Success
+          messageDiv.textContent = '¡Gracias por suscribirte!';
+          messageDiv.style.color = 'var(--red)';
+          form.reset();
+          
+          // Redirect to the gracias page
+          window.location.href = '/gracias';
+        } else {
+          // Handle error
+          const errorData = await response.json();
+          console.error('Submission error:', errorData);
+          
+          // Show user-friendly error message
+          if (errorData.message && errorData.message.includes('Email is required')) {
+            messageDiv.textContent = 'Error: El correo electrónico es requerido';
+          } else {
+            messageDiv.textContent = `Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud'}`;
+          }
+          messageDiv.style.color = 'var(--red-accent)';
+        }
+      } catch (error) {
+        // Handle network errors
+        messageDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo más tarde.';
+        messageDiv.style.color = 'var(--red-accent)';
+        console.error('Submission error:', error);
+      }
+    });
+  });
+</script>
 
 
 

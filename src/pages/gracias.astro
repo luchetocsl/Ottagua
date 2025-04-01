@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ThankYouSteps from "../components/ThankYouSteps.astro";
+import EmailExplanation from "../components/EmailExplanation.astro";
+import ProfileUpdateForm from "../components/ProfileUpdateForm.astro";
+
+const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
+---
+
+<BaseLayout>
+	<div class='thanks-container'>
+		<div class="header-section">
+			<h1>¡Gracias por suscribirte!</h1>
+			<p class="subtitle">Aprovecha al máximo tu suscripción</p>
+		</div>
+		
+		<EmailExplanation />
+		
+		<ThankYouSteps />
+		
+		<ProfileUpdateForm PLUNK_API_KEY={PLUNK_API_KEY} />
+	</div>
+</BaseLayout>
+
+<style>
+	.thanks-container {
+		color: var(--red);
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-direction: column;
+		gap: 3rem;
+		max-width: 75.5rem;
+		width: 100%;
+		padding: 2rem 1rem;
+		margin: 0 auto;
+	}
+
+	.header-section {
+		text-align: center;
+		max-width: 40rem;
+		width: 100%;
+	}
+
+	h1 {
+		font-size: 2.25rem;
+		text-align: center;
+		margin-bottom: 0.5rem;
+		color: var(--red);
+		max-width: 25ch;
+	}
+	
+	.subtitle {
+		text-align: center;
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+		color: var(--red);
+	}
+
+	@media screen and (max-width: 768px) {
+		.thanks-container {
+			gap: 2rem;
+			padding: 1.5rem 1rem;
+		}
+
+		h1 {
+			font-size: 1.75rem;
+		}
+	}
+</style>

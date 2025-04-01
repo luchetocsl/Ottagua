@@ -3,6 +3,12 @@
 const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 ---
 
+<!-- Replace the API key placeholder in the script -->
+<script define:vars={{ PLUNK_API_KEY }}>
+  // @ts-ignore - Adding property to window
+  window.PLUNK_API_KEY = PLUNK_API_KEY;
+</script>
+
 <section class='signup' id='signup'>
 	<main>
 		<div>
@@ -11,7 +17,7 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 				Por el momento, tengo pensado escribir sobre inmigración,
 				restaurantes nuevos o eventos organizados por las embajadas de
 				nuestros países. También me gustaría incluir torneos deportivos
-				o fiestas pero quiero conocer tu opinion. Estoy abierto a todas
+				o fiestas pero quiero conocer tu opinión. Estoy abierto a todas
 				las sugerencias.
 			</p>
 			<p>
@@ -21,10 +27,9 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 		</div>
 
 		<div class='form-container'>
-			<form class='signup-form' action="https://api.useplunk.com/v1/track" method="post">
+			<form class='signup-form' id="plunk-form">
 				<input type="hidden" name="event" value="subscription" />
 				<input type="hidden" name="redirect" value="/" />
-				<input type="hidden" name="api_key" value={PLUNK_API_KEY} />
 				<div class='form-group'>
 					<label for='email'>Correo electrónico</label>
 					<input type='email' name='email' placeholder='tu@email.com' required />
@@ -34,6 +39,7 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 					<input type='text' name='name' placeholder='Tu nombre' />
 				</div>
 				<button type='submit' class='submit-button'>Suscríbete</button>
+				<div id="form-message" class="form-message"></div>
 			</form>
 		</div>
 	</main>
@@ -126,7 +132,10 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 	.form-message {
 		text-align: center;
 		font-size: var(--font-sm);
-		margin-top: var(--space-sm);
+		margin-top: 1rem;
+		font-weight: 500;
+		height: 1.5rem;
+		color: var(--red);
 	}
 
 	@media screen and (max-width: 600px) {
@@ -142,6 +151,88 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 		}
 	}
 </style>
+
+<script>
+  // Get the API key from the window object
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('plunk-form') as HTMLFormElement;
+    const messageDiv = document.getElementById('form-message');
+    
+    if (!form || !messageDiv) return;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form);
+      // @ts-ignore - Using window property
+      formData.append('api_key', window.PLUNK_API_KEY || '');
+      
+      // Check if email is provided
+      const emailValue = formData.get('email');
+      if (!emailValue) {
+        messageDiv.textContent = 'Error: El correo electrónico es requerido';
+        messageDiv.style.color = 'var(--red-accent)';
+        return;
+      }
+      
+      // Get email and name from form
+      const email = emailValue.toString();
+      const name = formData.get('name')?.toString() || '';
+      
+      // Prepare data in the format expected by Plunk API
+      const requestData = {
+        event: 'subscription',
+        email: email,
+        subscribed: true,
+        data: {
+          name: name
+        }
+      };
+      
+      try {
+        // Send the request with proper headers as per Plunk API docs
+        const response = await fetch('https://api.useplunk.com/v1/track', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // @ts-ignore - Using window property
+            'Authorization': `Bearer ${window.PLUNK_API_KEY || ''}`
+          },
+          body: JSON.stringify(requestData)
+        });
+        
+        if (response.ok) {
+          // Success - redirect to home page or show success message
+          messageDiv.textContent = '¡Gracias por suscribirte!';
+          messageDiv.style.color = 'var(--red)';
+          form.reset();
+          
+          // Redirect to the gracias page
+          window.location.href = '/gracias';
+        } else {
+          // Handle error
+          const errorData = await response.json();
+          console.error('Submission error:', errorData);
+          
+          // Show user-friendly error message
+          if (errorData.message && errorData.message.includes('Email is required')) {
+            messageDiv.textContent = 'Error: El correo electrónico es requerido';
+          } else {
+            messageDiv.textContent = `Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud'}`;
+          }
+          messageDiv.style.color = 'var(--red-accent)';
+        }
+      } catch (error) {
+        // Handle network errors
+        messageDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo más tarde.';
+        messageDiv.style.color = 'var(--red-accent)';
+        console.error('Submission error:', error);
+      }
+    });
+  });
+</script>
 
 
 

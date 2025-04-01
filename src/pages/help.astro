@@ -13,7 +13,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				<p>
 					Estoy siguiendo varios grupos latinos en Facebook, sigo a
 					todas las embajadas que he podido encontrar, y sigo las
-					noticias locales para curar las noticias mas importantes
+					noticias locales para curar las noticias más importantes
 					para nuestra comunidad. Pero siempre estoy descubriendo
 					nuevas fuentes.
 				</p>
@@ -74,6 +74,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	.iframecontainer {
 		align-self: center;
 		max-width: 50rem;
+		width: 100%;
 	}
 
 	@media screen and (max-width: 600px) {
@@ -93,17 +94,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </style>
 
 <script>
+	// @ts-ignore - Tally is loaded from external script
 	var d = document,
 		w = "https://tally.so/widgets/embed.js",
 		v = function () {
+			// @ts-ignore - Tally is loaded from external script
 			"undefined" != typeof Tally
 				? Tally.loadEmbeds()
 				: d
 						.querySelectorAll("iframe[data-tally-src]:not([src])")
 						.forEach(function (e) {
-							e.src = e.dataset.tallySrc;
+							if (e instanceof HTMLIFrameElement) {
+								// @ts-ignore - dataset property exists on HTMLIFrameElement
+								e.src = e.dataset.tallySrc;
+							}
 						});
 		};
+	// @ts-ignore - Tally is loaded from external script
 	if ("undefined" != typeof Tally) v();
 	else if (d.querySelector('script[src="' + w + '"]') == null) {
 		var s = d.createElement("script");

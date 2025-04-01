@@ -1,0 +1,92 @@
+---
+---
+
+<div class="steps-container">
+  <div class="step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <h3>Unirse al Boletín</h3>
+      <p>¡Ya estás dentro! Recibirás noticias cada semana.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <h3>Responde al Email</h3>
+      <p>Te hemos enviado un correo de bienvenida. ¡Respóndelo con un simple "Hola"!</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <div class="step-number">3</div>
+    <div class="step-content">
+      <h3>Recibe Tu Primer Boletín</h3>
+      <p>Pronto recibirás tu primer boletín con las noticias más relevantes de Ottawa.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .steps-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 75.5rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    position: relative;
+    max-width: 20rem;
+  }
+  
+  .step-number {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--red);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-content h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    color: var(--red);
+  }
+  
+  .step-content p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .steps-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .step {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+</style>
