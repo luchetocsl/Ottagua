@@ -1,0 +1,20 @@
+---
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const url = `https://www.instagram.com/p/${id}/`;
+---
+
+<div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink={url}
+    style="max-width: 100%; border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none; display: block; margin: 1em 0; min-width: 326px; padding: 0;"
+  >
+    <a href={url} target="_blank" rel="noopener">View on Instagram</a>
+  </blockquote>
+  <script async src="//www.instagram.com/embed.js"></script>
+</div>
