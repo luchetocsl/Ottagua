@@ -1,5 +1,6 @@
 ---
-
+// Import environment variables - must be prefixed with PUBLIC_ to be available in client-side code
+const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 ---
 
 <section class='signup' id='signup'>
@@ -19,17 +20,21 @@
 			</p>
 		</div>
 
-		<div class='iframecontainer'>
-			<iframe
-				data-tally-src='https://tally.so/embed/wz7lGR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
-				loading='lazy'
-				width='100%'
-				height='437'
-				frameborder='0'
-				marginheight='0'
-				marginwidth='0'
-				title='Suscríbete a Ottagua'>
-			</iframe>
+		<div class='form-container'>
+			<form class='signup-form' action="https://api.useplunk.com/v1/track" method="post">
+				<input type="hidden" name="event" value="subscription" />
+				<input type="hidden" name="redirect" value="/" />
+				<input type="hidden" name="api_key" value={PLUNK_API_KEY} />
+				<div class='form-group'>
+					<label for='email'>Correo electrónico</label>
+					<input type='email' name='email' placeholder='tu@email.com' required />
+				</div>
+				<div class='form-group'>
+					<label for='name'>Nombre (opcional)</label>
+					<input type='text' name='name' placeholder='Tu nombre' />
+				</div>
+				<button type='submit' class='submit-button'>Suscríbete</button>
+			</form>
 		</div>
 	</main>
 </section>
@@ -48,56 +53,96 @@
 		align-items: top;
 		justify-content: center;
 		flex: 1;
-		gap: 2rem;
+		gap: var(--space-lg);
 	}
 
 	h3 {
 		text-align: center;
-		margin-bottom: 2rem;
+		margin-bottom: var(--space-lg);
 		color: var(--red);
 	}
 
 	p {
 		color: var(--red);
 		max-width: 24.444rem;
-		font-size: 0.778rem;
+		font-size: var(--font-sm);
 	}
 
-	.iframecontainer {
+	.form-container {
 		align-self: center;
-		max-width: 50rem;
-		border-radius: 20px;
+		max-width: 24.444rem;
+		width: 100%;
+		border-radius: var(--radius-lg);
+		padding: var(--space-lg);
+		border: 1px solid var(--red);
+		background-color: var(--cream);
+	}
+
+	.signup-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+	}
+
+	label {
+		font-size: var(--font-sm);
+		color: var(--red);
+	}
+
+	input {
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--red);
+		border-radius: 1.5rem;
+		font-size: var(--font-sm);
+		outline: none;
+		transition: border-color 0.2s ease;
+	}
+
+	input:focus {
+		border-color: var(--red-accent);
+	}
+
+	.submit-button {
+		background-color: var(--red);
+		color: var(--cream);
+		padding: 0.5rem 1.5rem;
+		border: none;
+		border-radius: 1.5rem;
+		cursor: pointer;
+		font-size: var(--font-sm);
+		transition: background-color 0.2s ease;
+	}
+
+	.submit-button:hover {
+		background-color: var(--red-accent);
+	}
+
+	.form-message {
+		text-align: center;
+		font-size: var(--font-sm);
+		margin-top: var(--space-sm);
 	}
 
 	@media screen and (max-width: 600px) {
 		main {
 			flex-direction: column;
 			& p {
-				font-size: 1rem;
+				font-size: var(--font-base);
 			}
 		}
 
-		.iframecontainer {
+		.form-container {
 			width: 100%;
 		}
 	}
 </style>
 
-<script>
-	var d = document,
-		w = "https://tally.so/widgets/embed.js",
-		v = function () {
-			"undefined" != typeof Tally
-				? Tally.loadEmbeds()
-				: d
-						.querySelectorAll("iframe[data-tally-src]:not([src])")
-						.forEach(function (e) {
-							e.src = e.dataset.tallySrc;
-						});
-		};
-	if ("undefined" != typeof Tally) v();
-	else if (d.querySelector('script[src="' + w + '"]') == null) {
-		var s = d.createElement("script");
-		(s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
-	}
-</script>
+
+
+

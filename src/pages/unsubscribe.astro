@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Import environment variables
+const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
+---
+
+<BaseLayout title="Cancelar suscripción | Ottagua">
+  <main class="unsubscribe-page">
+    <h1>Cancelar suscripción</h1>
+    <p>Lamentamos que quieras cancelar tu suscripción. Por favor, ingresa tu correo electrónico para confirmar.</p>
+    
+    <div class="form-container">
+      <form class="unsubscribe-form" action="https://api.useplunk.com/v1/contacts/unsubscribe" method="post">
+        <input type="hidden" name="redirect" value="/" />
+        <input type="hidden" name="api_key" value={PLUNK_API_KEY} />
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" name="email" placeholder="tu@email.com" required />
+        </div>
+        <button type="submit" class="submit-button">Cancelar suscripción</button>
+      </form>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .unsubscribe-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-md);
+    min-height: 60vh;
+  }
+
+  h1 {
+    color: var(--red);
+    margin-bottom: var(--space-md);
+    text-align: center;
+  }
+
+  p {
+    color: var(--red);
+    max-width: 30rem;
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-base);
+  }
+
+  .form-container {
+    max-width: 24.444rem;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    border: 1px solid var(--red);
+    background-color: var(--cream);
+  }
+
+  .unsubscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  label {
+    font-size: var(--font-sm);
+    color: var(--red);
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--red);
+    border-radius: 1.5rem;
+    font-size: var(--font-sm);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  input:focus {
+    border-color: var(--red-accent);
+  }
+
+  .submit-button {
+    background-color: var(--red);
+    color: var(--cream);
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    font-size: var(--font-sm);
+    transition: background-color 0.2s ease;
+  }
+
+  .submit-button:hover {
+    background-color: var(--red-accent);
+  }
+
+  .form-message {
+    text-align: center;
+    font-size: var(--font-sm);
+    margin-top: var(--space-sm);
+  }
+</style>
+
+

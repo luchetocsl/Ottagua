@@ -1,0 +1,195 @@
+---
+// Import environment variables - must be prefixed with PUBLIC_ to be available in client-side code
+const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
+import "remixicon/fonts/remixicon.css";
+---
+
+<section>
+	<main>
+		<div class='hero'>
+			<h1>La guía de supervivencia para latinos en Ottawa</h1>
+			<p>
+				Suscríbete al único newsletter con todo lo que necesitas saber
+				para sobrevivir a la Capital de Canadá.
+			</p>
+			<form class="hero-signup-form">
+				<div class="form-input-group">
+					<input type="email" id="hero-email" name="email" placeholder="tu@email.com" required />
+					<button type="submit" class="submit-button">Suscríbete <i class='ri-arrow-right-up-line'></i></button>
+				</div>
+				<p class="form-message"></p>
+			</form>
+		</div>
+	</main>
+</section>
+
+<style>
+	section {
+		background-color: var(--cream);
+		width: 100%;
+	}
+
+	main {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		height: 100%;
+		flex-direction: row;
+	}
+
+	.hero {
+		color: var(--red);
+		padding: 2rem;
+		max-width: 50rem;
+		display: flex;
+		gap: 1rem;
+		flex-direction: column;
+	}
+
+	.hero p {
+		max-width: 25.278rem;
+	}
+
+	.hero-signup-form {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 25.278rem;
+	}
+
+	.form-input-group {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.hero-signup-form input {
+		padding: 0.5rem 1rem;
+		border: 2px solid var(--red);
+		border-radius: 1.5rem;
+		font-size: var(--font-sm);
+		outline: none;
+		transition: all 0.2s ease;
+		flex: 1;
+		color: var(--red);
+	}
+
+	.hero-signup-form input:focus {
+		border-color: var(--red-accent);
+		box-shadow: 0 0 0 1px var(--red-accent);
+	}
+
+	.hero-signup-form .submit-button {
+		padding: 0.5rem 1.5rem;
+		border-radius: 1.5rem;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-sm);
+		width: fit-content;
+		transition: all 0.2s ease;
+		background-color: var(--red);
+		color: var(--cream);
+		border: none;
+		cursor: pointer;
+		gap: 0.25rem;
+	}
+
+	.hero-signup-form .submit-button:hover {
+		background-color: var(--red-accent);
+	}
+
+	.form-message {
+		font-size: var(--font-xs);
+		height: 1rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		section {
+			min-height: 10vh;
+			padding: 2rem 0;
+		}
+
+		.hero {
+			padding: 0rem;
+		}
+
+		.form-input-group {
+			flex-direction: column;
+		}
+	}
+</style>
+
+<script define:vars={{apiKey: PLUNK_API_KEY}}>
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.querySelector('.hero-signup-form');
+		const formMessage = form.querySelector('.form-message');
+
+		if (form && formMessage) {
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				
+				const emailInput = document.getElementById('hero-email');
+				const submitButton = form.querySelector('.submit-button');
+				
+				if (!emailInput || !submitButton) return;
+				
+				const email = emailInput.value;
+				
+				// Disable the button and show loading state
+				submitButton.disabled = true;
+				submitButton.innerHTML = 'Enviando...';
+				formMessage.textContent = '';
+				
+				try {
+					// First, create a contact with Plunk API
+					const createResponse = await fetch('https://api.useplunk.com/v1/contacts', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${apiKey}`
+						},
+						body: JSON.stringify({
+							email: email,
+							subscribed: true,
+							data: {
+								source: 'hero_form'
+							}
+						})
+					});
+					
+					// Also track the subscription event
+					const trackResponse = await fetch('https://api.useplunk.com/v1/track', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${apiKey}`
+						},
+						body: JSON.stringify({
+							event: 'subscription',
+							email: email
+						})
+					});
+					
+					if (createResponse.ok) {
+						// Success
+						form.reset();
+						formMessage.textContent = '¡Gracias por suscribirte!';
+						formMessage.style.color = 'green';
+					} else {
+						// API error
+						throw new Error('Error al procesar la suscripción');
+					}
+				} catch (error) {
+					console.error('Subscription error:', error);
+					formMessage.textContent = 'Hubo un error. Por favor, intenta de nuevo.';
+					formMessage.style.color = 'red';
+				} finally {
+					// Re-enable the button
+					submitButton.disabled = false;
+					submitButton.innerHTML = 'Suscríbete <i class="ri-arrow-right-up-line"></i>';
+				}
+			});
+		}
+	});
+</script>

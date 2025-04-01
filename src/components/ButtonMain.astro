@@ -11,12 +11,17 @@ import "remixicon/fonts/remixicon.css";
 <style>
 	.button {
 		background-color: var(--red);
-		padding: 1rem 2rem;
-		border-radius: 2rem;
+		padding: 0.5rem 1.5rem;
+		border-radius: 1.5rem;
 		text-decoration: none;
 		color: var(--cream);
 		display: inline-block;
-		font-size: 1rem;
+		font-size: var(--font-sm);
 		width: fit-content;
+		transition: background-color 0.2s ease;
+	}
+	
+	.button:hover {
+		background-color: var(--red-accent);
 	}
 </style>

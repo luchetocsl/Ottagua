@@ -1,5 +1,6 @@
 ---
-import ButtonMain from "../../components/ButtonMain.astro";
+// Import environment variables - must be prefixed with PUBLIC_ to be available in client-side code
+const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 ---
 
 <section>
@@ -10,7 +11,15 @@ import ButtonMain from "../../components/ButtonMain.astro";
 				Suscríbete al único newsletter con todo lo que necesitas saber
 				para sobrevivir a la Capital de Canadá.
 			</p>
-			<ButtonMain title='Suscríbete' link='/#signup' />
+			<form class="hero-signup-form" action="https://api.useplunk.com/v1/track" method="post">
+				<input type="hidden" name="event" value="subscription" />
+				<input type="hidden" name="redirect" value="/"/>
+				<input type="hidden" name="api_key" value={PLUNK_API_KEY} />
+				<div class="form-input-group">
+					<input type="email" name="email" placeholder="tu@email.com" required />
+					<button type="submit" class="submit-button">Suscríbete <i class='ri-arrow-right-up-line'></i></button>
+				</div>
+			</form>
 		</div>
 	</main>
 </section>
@@ -42,6 +51,59 @@ import ButtonMain from "../../components/ButtonMain.astro";
 		max-width: 25.278rem;
 	}
 
+	.hero-signup-form {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 25.278rem;
+	}
+
+	.form-input-group {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.hero-signup-form input {
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--red);
+		border-radius: 1.5rem;
+		font-size: var(--font-sm);
+		outline: none;
+		transition: border-color 0.2s ease;
+		flex: 1;
+		color: var(--red);
+	}
+
+	.hero-signup-form input:focus {
+		border-color: var(--red-accent);
+	}
+
+	.hero-signup-form .submit-button {
+		padding: 0.5rem 1.5rem;
+		border-radius: 1.5rem;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-sm);
+		width: fit-content;
+		transition: all 0.2s ease;
+		background-color: var(--red);
+		color: var(--cream);
+		border: none;
+		cursor: pointer;
+		gap: 0.25rem;
+	}
+
+	.hero-signup-form .submit-button:hover {
+		background-color: var(--red-accent);
+	}
+
+	.form-message {
+		font-size: var(--font-xs);
+		height: 1rem;
+	}
+
 	@media screen and (max-width: 600px) {
 		section {
 			min-height: 10vh;
@@ -51,5 +113,12 @@ import ButtonMain from "../../components/ButtonMain.astro";
 		.hero {
 			padding: 0rem;
 		}
+
+		.form-input-group {
+			flex-direction: column;
+		}
 	}
 </style>
+
+
+

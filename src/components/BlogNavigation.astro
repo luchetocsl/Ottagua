@@ -1,0 +1,164 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { currentSlug, posts } = Astro.props;
+
+// Sort posts by publication date (newest first)
+const sortedPosts = [...posts].sort((a, b) => 
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+// Find the index of the current post
+const currentIndex = sortedPosts.findIndex(post => post.slug === currentSlug);
+
+// Get previous and next posts
+const prevPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+---
+
+<div class="blog-navigation">
+  <div class="nav-row">
+    {prevPost && (
+      <a href={`/blog/${prevPost.slug}/`} class="prev-post">
+        <div class="nav-arrow">←</div>
+        <div class="nav-content">
+          <div class="nav-label">Artículo anterior</div>
+          <div class="post-title">{prevPost.data.title}</div>
+        </div>
+      </a>
+    )}
+    
+    {!prevPost && <div class="nav-placeholder"></div>}
+    
+    <a href="/blog/" class="back-to-blog">
+      <div class="back-label">Volver al blog</div>
+    </a>
+    
+    {nextPost && (
+      <a href={`/blog/${nextPost.slug}/`} class="next-post">
+        <div class="nav-content">
+          <div class="nav-label">Artículo siguiente</div>
+          <div class="post-title">{nextPost.data.title}</div>
+        </div>
+        <div class="nav-arrow">→</div>
+      </a>
+    )}
+    
+    {!nextPost && <div class="nav-placeholder"></div>}
+  </div>
+</div>
+
+<style>
+  .blog-navigation {
+    margin: var(--space-lg) 0;
+    padding-top: var(--space-md);
+  }
+  
+  .blog-navigation a {
+    border-bottom: none;
+  }
+
+  .nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .prev-post, .next-post {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    max-width: 40%;
+    border-bottom: none;
+  }
+
+  .prev-post:hover, .next-post:hover, .back-to-blog:hover {
+    color: var(--red-accent);
+  }
+
+  .back-to-blog {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-decoration: none;
+    padding-bottom: 0.25rem;
+    border-bottom: none;
+    width: 20%;
+  }
+
+  .back-label {
+    color: var(--red);
+    font-weight: normal;
+    font-size: var(--font-sm);
+  }
+
+  .nav-content {
+    flex: 1;
+  }
+
+  .prev-post .nav-content {
+    text-align: left;
+  }
+
+  .next-post .nav-content {
+    text-align: right;
+  }
+
+  .nav-label {
+    color: var(--red-accent);
+    font-size: var(--font-xs);
+    margin-bottom: 0.125rem;
+  }
+
+  .post-title {
+    color: var(--red);
+    font-size: var(--font-base);
+    font-weight: normal;
+  }
+
+  .nav-arrow {
+    font-size: var(--font-base);
+    color: var(--red);
+    margin: 0 var(--space-xs);
+  }
+
+  .nav-placeholder {
+    width: 40%;
+  }
+
+  @media (max-width: 768px) {
+    .nav-row {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .prev-post, .next-post, .nav-placeholder {
+      max-width: 100%;
+    }
+
+    .back-to-blog {
+      margin: var(--space-md) 0;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .prev-post .nav-content,
+    .next-post .nav-content {
+      text-align: left;
+    }
+
+    .next-post {
+      flex-direction: row-reverse;
+    }
+    
+    .post-title {
+      font-size: var(--font-sm);
+    }
+  }
+</style>
