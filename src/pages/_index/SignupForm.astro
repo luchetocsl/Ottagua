@@ -11,43 +11,31 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 
 <section class="flex justify-center items-center w-full" id="signup">
 	<div class="max-w-[1240px] w-full mx-auto px-4 py-16">
-		<div class="flex flex-col items-center justify-center w-full max-w-3xl mx-auto">
-			<h3 class="text-red text-2xl font-semibold mb-8 text-center">Suscríbete</h3>
+		<div class="flex flex-col justify-center items-center mx-auto w-full max-w-3xl">
+			<h3 class="mb-8 text-2xl font-semibold text-center text-red">Suscríbete</h3>
 			
-			<div class="flex md:flex-row flex-col items-center justify-center gap-12 w-full">
-				<div class="md:w-1/2 w-full">
-					<div class="max-w-md mx-auto">
-						<p class="text-red text-lg mb-4">
+			<div class="flex flex-col gap-12 justify-center items-center w-full md:flex-row">
+				<div class="w-full md:w-1/2">
+					<div class="mx-auto max-w-md">
+						<p class="mb-4 text-lg text-red">
 							Por el momento, tengo pensado escribir sobre inmigración,
 							restaurantes nuevos o eventos organizados por las embajadas de
 							nuestros países. También me gustaría incluir torneos deportivos
 							o fiestas pero quiero conocer tu opinión. Estoy abierto a todas
 							las sugerencias.
 						</p>
-						<p class="text-red text-lg">
+						<p class="text-lg text-red">
 							Si quieres recomendarme donde buscar noticias, puedes hacerlo
-							aquí: <a href='/help/' class="text-red underline hover:text-red-accent transition-colors">Ayuda a Ottagua</a>
+							aquí: <a href='/help/' class="underline transition-colors text-red hover:text-red-accent">Ayuda a Ottagua</a>
 						</p>
 					</div>
 				</div>
 
-				<div class="md:w-1/2 w-full">
-					<div class="max-w-md mx-auto rounded-lg p-5 border border-red bg-cream">
+				<div class="w-full md:w-1/2">
+					<div class="p-5 mx-auto max-w-md rounded-lg border border-red bg-cream">
 						<form class="flex flex-col gap-3" id="plunk-form">
 							<input type="hidden" name="event" value="subscription" />
 							<input type="hidden" name="redirect" value="/" />
-							<div class="flex flex-col gap-1">
-								<label for="email-input" class="text-sm text-red">Correo electrónico</label>
-								<input 
-									id="email-input"
-									type="email" 
-									name="email" 
-									placeholder="tu@email.com" 
-									required 
-									autocomplete="email"
-									class="py-2 px-4 border border-red rounded-full text-sm outline-none transition-colors focus:border-red-accent"
-								/>
-							</div>
 							<div class="flex flex-col gap-1">
 								<label for="name-input" class="text-sm text-red">Nombre (opcional)</label>
 								<input 
@@ -56,12 +44,26 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 									name="name" 
 									placeholder="Tu nombre" 
 									autocomplete="name"
-									class="py-2 px-4 border border-red rounded-full text-sm outline-none transition-colors focus:border-red-accent"
+									class="px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red focus:border-red-accent"
 								/>
 							</div>
+              
+              <div class="flex flex-col gap-1">
+								<label for="email-input" class="text-sm text-red">Correo electrónico</label>
+								<input 
+									id="email-input"
+									type="email" 
+									name="email" 
+									placeholder="tu@email.com" 
+									required 
+									autocomplete="email"
+									class="px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red focus:border-red-accent"
+								/>
+							</div>
+							
 							<button 
 								type="submit" 
-								class="bg-red text-cream py-2 px-6 border-none rounded-full cursor-pointer text-sm transition-colors hover:bg-red-accent mt-1"
+								class="px-6 py-2 mt-1 text-sm rounded-full border-none transition-colors cursor-pointer bg-red text-cream hover:bg-red-accent"
 							>
 								Suscríbete
 							</button>
