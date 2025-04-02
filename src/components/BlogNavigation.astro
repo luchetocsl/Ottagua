@@ -21,146 +21,63 @@ const prevPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 ---
 
-<div class="blog-navigation">
-  <div class="nav-row">
+<div class="my-4 pt-2 mx-auto max-w-[1240px] px-4">
+  <div class="flex justify-between items-end">
     {prevPost && (
-      <a href={`/blog/${prevPost.slug}/`} class="prev-post">
-        <div class="nav-arrow">←</div>
-        <div class="nav-content">
-          <div class="nav-label">Artículo anterior</div>
-          <div class="post-title">{prevPost.data.title}</div>
+      <a href={`/blog/${prevPost.slug}/`} class="flex items-center no-underline py-0.5 max-w-[35%] hover:text-red-accent">
+        <div class="text-xs text-red mx-1">←</div>
+        <div class="flex-1 text-left">
+          <div class="text-red-accent text-[10px] mb-0.5">Artículo anterior</div>
+          <div class="text-red text-xs font-normal leading-tight">{prevPost.data.title}</div>
         </div>
       </a>
     )}
     
-    {!prevPost && <div class="nav-placeholder"></div>}
+    {!prevPost && <div class="w-[35%]"></div>}
     
-    <a href="/blog/" class="back-to-blog">
-      <div class="back-label">Volver al blog</div>
+    <a href="/blog/" class="flex justify-center items-end no-underline pb-0.5 w-1/6 hover:text-red-accent">
+      <div class="text-red font-normal text-[10px]">Volver al blog</div>
     </a>
     
     {nextPost && (
-      <a href={`/blog/${nextPost.slug}/`} class="next-post">
-        <div class="nav-content">
-          <div class="nav-label">Artículo siguiente</div>
-          <div class="post-title">{nextPost.data.title}</div>
+      <a href={`/blog/${nextPost.slug}/`} class="flex items-center no-underline py-0.5 max-w-[35%] hover:text-red-accent">
+        <div class="flex-1 text-right">
+          <div class="text-red-accent text-[10px] mb-0.5">Artículo siguiente</div>
+          <div class="text-red text-xs font-normal leading-tight">{nextPost.data.title}</div>
         </div>
-        <div class="nav-arrow">→</div>
+        <div class="text-xs text-red mx-1">→</div>
       </a>
     )}
     
-    {!nextPost && <div class="nav-placeholder"></div>}
+    {!nextPost && <div class="w-[35%]"></div>}
   </div>
 </div>
 
 <style>
-  .blog-navigation {
-    margin: 2rem 0;
-    padding-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .blog-navigation a {
-    border-bottom: none;
-  }
-
-  .nav-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .prev-post, .next-post {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.15rem 0;
-    max-width: 35%;
-    border-bottom: none;
-  }
-
-  .prev-post:hover, .next-post:hover, .back-to-blog:hover {
-    color: var(--red-accent);
-  }
-
-  .back-to-blog {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    text-decoration: none;
-    padding-bottom: 0.25rem;
-    border-bottom: none;
-    width: 20%;
-  }
-
-  .back-label {
-    color: var(--red);
-    font-weight: normal;
-    font-size: 0.8rem;
-  }
-
-  .nav-content {
-    flex: 1;
-  }
-
-  .prev-post .nav-content {
-    text-align: left;
-  }
-
-  .next-post .nav-content {
-    text-align: right;
-  }
-
-  .nav-label {
-    color: var(--red-accent);
-    font-size: 0.7rem;
-    margin-bottom: 0.1rem;
-  }
-
-  .post-title {
-    color: var(--red);
-    font-size: 0.85rem;
-    font-weight: normal;
-  }
-
-  .nav-arrow {
-    font-size: 0.85rem;
-    color: var(--red);
-    margin: 0 0.25rem;
-  }
-
-  .nav-placeholder {
-    width: 40%;
-  }
-
+  /* All styling now handled by Tailwind classes */
   @media (max-width: 768px) {
-    .nav-row {
-      flex-direction: column;
-      gap: 0.75rem;
+    div[class*="flex justify-between"] {
+      @apply flex-col gap-3;
     }
 
-    .prev-post, .next-post, .nav-placeholder {
-      max-width: 100%;
+    a[class*="max-w-[35%]"], div[class*="w-[40%]"] {
+      @apply max-w-full;
     }
 
-    .back-to-blog {
-      margin: 0.75rem 0;
-      width: 100%;
-      justify-content: center;
+    a[class*="w-1/5"] {
+      @apply w-full my-3 justify-center;
     }
 
-    .prev-post .nav-content,
-    .next-post .nav-content {
-      text-align: left;
+    div[class*="text-right"] {
+      @apply text-left;
     }
 
-    .next-post {
-      flex-direction: row-reverse;
+    a[class*="flex items-center"]:last-child {
+      @apply flex-row-reverse;
     }
     
-    .post-title {
-      font-size: 0.75rem;
+    div[class*="text-sm font-normal"] {
+      @apply text-xs;
     }
   }
 </style>

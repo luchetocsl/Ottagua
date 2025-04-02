@@ -3,14 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-	<div class='company'>
-		<main>
-			<h2>Ayúdame a encontrar mejores noticias</h2>
-		</main>
+	<div class="text-red flex flex-col items-start justify-start gap-8 max-w-[1240px] mx-auto px-4 py-8 w-full">
+		<div class="w-full">
+			<h2 class="text-2xl font-semibold text-red text-center mb-8 max-w-md mx-auto">Ayúdame a encontrar mejores noticias</h2>
+		</div>
 
-		<main>
-			<div class='info'>
-				<p>
+		<div class="flex flex-row items-start justify-center gap-8 w-full md:flex-row">
+			<div class="max-w-md w-full">
+				<p class="mb-4 text-red leading-7">
 					Estoy siguiendo varios grupos latinos en Facebook, sigo a
 					todas las embajadas que he podido encontrar, y sigo las
 					noticias locales para curar las noticias más importantes
@@ -18,12 +18,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					nuevas fuentes.
 				</p>
 
-				<p>
+				<p class="mb-4 text-red leading-7">
 					Conoces alguna fuente que debería checar? Por favor,
 					compártela conmigo.
 				</p>
 			</div>
-			<div class='iframecontainer'>
+			<div class="self-center max-w-xl w-full">
 				<iframe
 					data-tally-src='https://tally.so/embed/3yYzD4?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
 					loading='lazy'
@@ -34,61 +34,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					marginwidth='0'
 					title='Ayuda a Ottagua'></iframe>
 			</div>
-		</main>
+		</div>
 	</div>
 </BaseLayout>
 
+<!-- All styling now handled by Tailwind classes -->
 <style>
-	.company {
-		color: var(--red);
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
-		flex-direction: column;
-		gap: 2rem;
-		max-width: 75.5rem;
-	}
-
-	main {
-		display: flex;
-		flex-direction: row;
-		align-items: top;
-		justify-content: center;
-		flex: 1;
-		gap: 2rem;
-	}
-
-	h2 {
-		text-align: center;
-		margin-bottom: 2rem;
-		color: var(--red);
-		max-width: 25ch;
-	}
-
-	p {
-		margin-bottom: 1rem;
-		color: var(--red);
-		max-width: 24.444rem;
-	}
-
-	.iframecontainer {
-		align-self: center;
-		max-width: 50rem;
-		width: 100%;
-	}
-
 	@media screen and (max-width: 600px) {
-		main {
-			flex-direction: column;
-			gap: 0;
+		.flex-row {
+			@apply flex-col;
 		}
-
-		h2 {
-			margin-bottom: 1rem;
+		.gap-8 {
+			@apply gap-0;
 		}
-
-		.iframecontainer {
-			width: 100%;
+		.mb-8 {
+			@apply mb-4;
 		}
 	}
 </style>

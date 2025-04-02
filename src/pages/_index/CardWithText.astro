@@ -5,95 +5,44 @@ import { Image } from "astro:assets";
 import city from "./../../assets/ottawa-parliament.jpg";
 ---
 
-<section>
-	<main>
-		<div class='image'>
-			<Image src={city} alt='Image by DEZALB from Pixabay' />
+<section class="bg-cream w-full flex items-center justify-center">
+	<div class="max-w-[1240px] mx-auto px-4 py-12 w-full">
+		<div class="flex flex-row items-center justify-center gap-8 md:flex-row sm:flex-col">
+			<div class="aspect-square flex items-center flex-shrink-0 md:w-1/2">
+				<Image src={city} alt='Image by DEZALB from Pixabay' class="w-full h-full object-cover rounded-xl" />
+			</div>
+			<div class="text-red max-w-xl flex flex-col gap-4">
+				<h2 class="text-3xl font-semibold leading-tight">
+					Todo lo que me hubiera gustado saber antes de mudarme a Ottawa
+				</h2>
+				<p class="max-w-md text-lg">
+					<b
+						>Descubre cómo sobrevivir al frío, qué hacer los fines de
+						semana, y cómo encontrar un equipo de fútbol en Ottawa.</b
+					>
+				</p>
+				<p class="max-w-md text-lg">
+					Cada semana, comparto los tips y trucos que he aprendido (y los
+					que me han dado) para disfrutar al máximo la vida en la capital
+					de Canadá.
+				</p>
+				<div class="mt-2">
+					<Button title='Suscríbete' link='/#signup' variant='secondary' />
+				</div>
+			</div>
 		</div>
-		<div class='text'>
-			<h2>
-				Todo lo que me hubiera gustado saber antes de mudarme a Ottawa
-			</h2>
-			<p>
-				<b
-					>Descubre cómo sobrevivir al frío, qué hacer los fines de
-					semana, y cómo encontrar un equipo de fútbol en Ottawa.</b
-				>
-			</p>
-			<p>
-				Cada semana, comparto los tips y trucos que he aprendido (y los
-				que me han dado) para disfrutar al máximo la vida en la capital
-				de Canadá.
-			</p>
-			<Button title='Suscríbete' link='/#signup' variant='secondary' />
-		</div>
-	</main>
+	</div>
 </section>
 
+<!-- All styling now handled by Tailwind classes -->
 <style>
-	section {
-		background-color: var(--cream);
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-	}
-
-	main {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		flex: 1;
-		gap: 2rem;
-	}
-
-	.image {
-		aspect-ratio: 1;
-		display: flex;
-		align-items: center;
-	}
-
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 20px;
-	}
-
-	.text {
-		color: var(--red);
-		max-width: 35.722rem;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.text p {
-		max-width: 24.444rem;
-	}
-
 	@media screen and (max-width: 600px) {
-		section {
-			flex-direction: column;
+		[class*="flex-row"] {
+			@apply flex-col;
 		}
-
-		main {
-			flex-direction: column;
-			padding: 0 1rem;
-		}
-
-		.image {
-			max-width: 100%;
-		}
-
-		img {
-			aspect-ratio: 1 / 1;
-			height: auto;
-		}
-
-		.text {
-			max-width: 100%;
+		
+		[class*="aspect-square"] {
+			@apply w-full;
 		}
 	}
 </style>

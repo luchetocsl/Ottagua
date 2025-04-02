@@ -12,27 +12,27 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout>
-	<div class='blog-index'>
+	<div class="max-w-[1240px] mx-auto px-4 py-16">
 		<main>
-			<ul>
+			<ul class="grid gap-16 md:grid-cols-2 lg:grid-cols-3">
 				{
-					posts.map((post) => (
-						<li>
-							<a href={`/blog/${post.slug}/`}>
-								<div class="image-container">
+					posts.map((post, index) => (
+						<li class={`list-none ${index === 0 ? 'md:col-span-2' : ''}`}>
+							<a href={`/blog/${post.slug}/`} class="no-underline block">
+								<div class="w-full aspect-[2/1] overflow-hidden rounded-lg mb-4 relative">
 									<img
-										class='hero-image'
+										class="w-full h-full object-cover"
 										src={typeof post.data.heroImage === 'string' ? post.data.heroImage : post.data.heroImage?.src || ''}
 										alt={post.data.title || 'Blog post image'}
 									/>
-								</div>
-								<div class='blog-details'>
-									<h4 class='title'>{post.data.title}</h4>
-									<p class='date'>
+									<div class="absolute top-3 right-3 bg-cream text-red text-xs font-medium py-1 px-3 rounded-full">
 										<FormattedDate
 											date={post.data.pubDate}
 										/>
-									</p>
+									</div>
+								</div>
+								<div class="flex flex-col">
+									<h3 class={`font-semibold text-red no-underline m-0 ${index === 0 ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'}`}>{post.data.title}</h3>
 								</div>
 							</a>
 						</li>
@@ -43,34 +43,4 @@ const posts = (await getCollection("blog")).sort(
 	</div>
 </BaseLayout>
 
-<style>
-	.blog-index {
-		li {
-			list-style: none;
-			margin-bottom: 2rem;
-		}
-	}
-
-	.image-container {
-		width: 100%;
-		aspect-ratio: 2 / 1;
-		overflow: hidden;
-		border-radius: 1rem;
-		margin-bottom: 1rem;
-	}
-
-	.hero-image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	main {
-		max-width: 80ch;
-	}
-
-	.blog-details {
-		display: flex;
-		justify-content: space-between;
-	}
-</style>
+<!-- All styling now handled by Tailwind classes -->

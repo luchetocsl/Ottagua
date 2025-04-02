@@ -4,124 +4,59 @@ import ListElement from "../../components/ListElement.astro";
 import "remixicon/fonts/remixicon.css";
 ---
 
-<section>
-	<h3>¿Por qué suscribirse?</h3>
+<section class="bg-cream flex flex-col justify-center items-center w-full py-16">
+	<div class="max-w-[1240px] w-full px-4 mx-auto">
+		<h3 class="text-red text-2xl font-semibold mb-10 md:text-left text-center">¿Por qué suscribirse?</h3>
 
-	<main>
-		<div class='company'>
-			<h4>Empresas</h4>
-			<ul>
-				<li>Anuncia tus eventos a una comunidad cautiva</li>
-				<li>
-					Forma parte del directorio de empresas de Ottagua
-					(próximamente)
-				</li>
-				<li>Oportunidades de networking</li>
-				<li>Es gratis</li>
-			</ul>
-			<a href='/company'>Leer más</a>
-		</div>
+		<div class="flex md:flex-row flex-col-reverse justify-between items-stretch gap-8">
+			<div class="md:w-1/2 w-full rounded-lg py-8 px-8 bg-red/10 text-red flex flex-col">
+				<h4 class="text-xl font-medium mb-6 text-center md:text-left">Empresas</h4>
+				<ul class="list-disc pl-5 mb-6 flex-grow text-lg">
+					<li class="mb-3">Anuncia tus eventos a una comunidad cautiva</li>
+					<li class="mb-3">
+						Forma parte del directorio de empresas de Ottagua
+						(próximamente)
+					</li>
+					<li class="mb-3">Oportunidades de networking</li>
+					<li class="mb-3">Es gratis</li>
+				</ul>
+				<div class="text-center md:text-left">
+					<a href='/company' class="text-red underline hover:text-red-accent transition-colors">Leer más</a>
+				</div>
+			</div>
 
-		<div class='benefits'>
-			<h4>Suscriptores</h4>
-			<ul>
-				<ListElement
-					icon='ri-mail-open-line'
-					text='Consejos para pasarla lo mejor posible en Ottawa'
-				/>
-				<ListElement
-					icon='ri-list-indefinite'
-					text='Directorio de empresas de Ottagua (Próximamente)'
-				/>
-				<ListElement
-					icon='ri-restaurant-line'
-					text='Recomendaciones de restaurantes'
-				/>
-				<ListElement
-					icon='ri-candle-line'
-					text='Recomendaciones de cosas que hacer en la ciudad'
-				/>
-				<ListElement
-					icon='ri-money-dollar-circle-line'
-					text='Es gratis'
-				/>
-			</ul>
-			<Button title='Suscríbete' link='/#signup' variant='primary' />
+			<div class="md:w-1/2 w-full flex flex-col items-center bg-red text-cream rounded-lg py-8 px-8">
+				<h4 class="text-xl font-medium mb-6 text-center md:text-left w-full">Suscriptores</h4>
+				<ul class="w-full mb-8 flex-grow">
+					<ListElement
+						icon='ri-mail-open-line'
+						text='Consejos para pasarla lo mejor posible en Ottawa'
+					/>
+					<ListElement
+						icon='ri-list-indefinite'
+						text='Directorio de empresas de Ottagua (Próximamente)'
+					/>
+					<ListElement
+						icon='ri-restaurant-line'
+						text='Recomendaciones de restaurantes'
+					/>
+					<ListElement
+						icon='ri-candle-line'
+						text='Recomendaciones de cosas que hacer en la ciudad'
+					/>
+					<ListElement
+						icon='ri-money-dollar-circle-line'
+						text='Es gratis'
+					/>
+				</ul>
+				<div class="w-full flex justify-center">
+					<Button title='Suscríbete' link='/#signup' variant='secondary'>
+						<div slot="parent-bg-red"></div>
+					</Button>
+				</div>
+			</div>
 		</div>
-	</main>
+	</div>
 </section>
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--cream);
-	}
-
-	main {
-		padding: var(--space-xl);
-		justify-content: center;
-		color: var(--red);
-		align-items: center;
-		flex-direction: row;
-	}
-
-	.company {
-		width: 100%;
-		max-width: 24.444rem;
-		border-radius: var(--radius-lg);
-		padding: var(--space-lg);
-
-		p {
-			font-size: var(--font-xs);
-			margin-top: var(--space-lg);
-		}
-		ul li {
-			margin-bottom: var(--space-xs);
-			margin-left: var(--space-sm);
-		}
-	}
-
-	.benefits {
-		width: 100%;
-		max-width: 24.444rem;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background-color: var(--cream);
-		border: 1px solid var(--red);
-		border-radius: var(--radius-lg);
-		padding: var(--space-lg);
-	}
-
-	h3 {
-		color: var(--red);
-		text-align: left;
-		margin-bottom: var(--space-lg);
-
-		@media screen and (max-width: 800px) {
-			text-align: center;
-		}
-	}
-
-	h4 {
-		margin-bottom: var(--space-lg);
-	}
-	.button {
-		justify-self: center;
-		align-self: center;
-	}
-
-	@media screen and (max-width: 800px) {
-		main {
-			flex-direction: column-reverse;
-			padding: 0 var(--space-sm);
-		}
-
-		.company {
-			padding: var(--space-lg) 0;
-		}
-	}
-</style>
+<!-- All styling now handled by Tailwind classes -->

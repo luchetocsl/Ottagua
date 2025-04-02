@@ -10,122 +10,39 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
   window.PLUNK_API_KEY = PLUNK_API_KEY;
 </script>
 
-<section>
-	<main>
-		<div class='hero'>
-			<h1>La guía de supervivencia para latinos en Ottawa</h1>
-			<p>
+<section class="bg-cream w-full min-h-[70vh] flex items-center">
+	<main class="flex justify-end items-center h-full w-full max-w-[1240px] mx-auto px-4">
+		<div class="text-red p-8 max-w-3xl flex gap-6 flex-col ml-auto mr-8 md:mr-16 lg:mr-24">
+			<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">La guía de supervivencia para latinos en Ottawa</h1>
+			<p class="text-lg max-w-prose">
 				Suscríbete al único newsletter con todo lo que necesitas saber
 				para sobrevivir a la Capital de Canadá.
 			</p>
-			<form class="hero-signup-form" id="hero-form">
+			<form class="flex flex-col gap-2 max-w-md" id="hero-form">
 				<input type="hidden" name="event" value="subscription" />
 				<input type="hidden" name="redirect" value="/"/>
-				<div class="form-input-group">
-					<input type="email" name="email" placeholder="tu@email.com" required />
-					<button type="submit" class="submit-button">Suscríbete <i class='ri-arrow-right-up-line'></i></button>
+				<div class="flex gap-2 md:flex-row flex-col">
+					<input 
+						type="email" 
+						name="email" 
+						placeholder="tu@email.com" 
+						required 
+						class="py-2 px-4 border border-red rounded-full text-sm outline-none transition-colors flex-1 text-red focus:border-red-accent"
+					/>
+					<button 
+						type="submit" 
+						class="py-2 px-6 rounded-full inline-flex items-center justify-center text-sm w-fit transition-all bg-red text-cream border-none cursor-pointer gap-1 hover:bg-red-accent"
+					>
+						Suscríbete <i class='ri-arrow-right-up-line'></i>
+					</button>
 				</div>
-				<div id="hero-form-message" class="form-message"></div>
+				<div id="hero-form-message" class="text-xs h-4"></div>
 			</form>
 		</div>
 	</main>
 </section>
 
-<style>
-	section {
-		background-color: var(--cream);
-		width: 100%;
-	}
-
-	main {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		height: 100%;
-		flex-direction: row;
-	}
-
-	.hero {
-		color: var(--red);
-		padding: 2rem;
-		max-width: 50rem;
-		display: flex;
-		gap: 1rem;
-		flex-direction: column;
-	}
-
-	.hero p {
-		max-width: 25.278rem;
-	}
-
-	.hero-signup-form {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		max-width: 25.278rem;
-	}
-
-	.form-input-group {
-		display: flex;
-		gap: 0.5rem;
-	}
-
-	.hero-signup-form input {
-		padding: 0.5rem 1rem;
-		border: 1px solid var(--red);
-		border-radius: 1.5rem;
-		font-size: var(--font-sm);
-		outline: none;
-		transition: border-color 0.2s ease;
-		flex: 1;
-		color: var(--red);
-	}
-
-	.hero-signup-form input:focus {
-		border-color: var(--red-accent);
-	}
-
-	.hero-signup-form .submit-button {
-		padding: 0.5rem 1.5rem;
-		border-radius: 1.5rem;
-		text-decoration: none;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		font-size: var(--font-sm);
-		width: fit-content;
-		transition: all 0.2s ease;
-		background-color: var(--red);
-		color: var(--cream);
-		border: none;
-		cursor: pointer;
-		gap: 0.25rem;
-	}
-
-	.hero-signup-form .submit-button:hover {
-		background-color: var(--red-accent);
-	}
-
-	.form-message {
-		font-size: var(--font-xs);
-		height: 1rem;
-	}
-
-	@media screen and (max-width: 600px) {
-		section {
-			min-height: 10vh;
-			padding: 2rem 0;
-		}
-
-		.hero {
-			padding: 0rem;
-		}
-
-		.form-input-group {
-			flex-direction: column;
-		}
-	}
-</style>
+<!-- All styling now handled by Tailwind classes -->
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

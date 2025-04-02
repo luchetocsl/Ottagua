@@ -8,10 +8,10 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 ---
 
 <BaseLayout>
-	<div class='thanks-container'>
-		<div class="header-section">
-			<h1>¡Gracias por suscribirte!</h1>
-			<p class="subtitle">Aprovecha al máximo tu suscripción</p>
+	<div class="text-red flex justify-start items-center flex-col gap-12 max-w-6xl w-full px-4 py-8 mx-auto">
+		<div class="text-center max-w-xl w-full">
+			<h1 class="text-4xl text-center mb-2 text-red max-w-prose mx-auto">¡Gracias por suscribirte!</h1>
+			<p class="text-center mb-4 text-xl text-red">Aprovecha al máximo tu suscripción</p>
 		</div>
 		
 		<EmailExplanation />
@@ -22,48 +22,14 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 	</div>
 </BaseLayout>
 
+<!-- All styling now handled by Tailwind classes -->
 <style>
-	.thanks-container {
-		color: var(--red);
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
-		gap: 3rem;
-		max-width: 75.5rem;
-		width: 100%;
-		padding: 2rem 1rem;
-		margin: 0 auto;
-	}
-
-	.header-section {
-		text-align: center;
-		max-width: 40rem;
-		width: 100%;
-	}
-
-	h1 {
-		font-size: 2.25rem;
-		text-align: center;
-		margin-bottom: 0.5rem;
-		color: var(--red);
-		max-width: 25ch;
-	}
-	
-	.subtitle {
-		text-align: center;
-		margin-bottom: 1rem;
-		font-size: 1.25rem;
-		color: var(--red);
-	}
-
 	@media screen and (max-width: 768px) {
-		.thanks-container {
+		.gap-12 {
 			gap: 2rem;
-			padding: 1.5rem 1rem;
 		}
-
-		h1 {
+		
+		.text-4xl {
 			font-size: 1.75rem;
 		}
 	}

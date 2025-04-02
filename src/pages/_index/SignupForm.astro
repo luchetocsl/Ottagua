@@ -9,157 +9,79 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
   window.PLUNK_API_KEY = PLUNK_API_KEY;
 </script>
 
-<section class='signup' id='signup'>
-	<main>
-		<div>
-			<h3>Suscríbete</h3>
-			<p>
-				Por el momento, tengo pensado escribir sobre inmigración,
-				restaurantes nuevos o eventos organizados por las embajadas de
-				nuestros países. También me gustaría incluir torneos deportivos
-				o fiestas pero quiero conocer tu opinión. Estoy abierto a todas
-				las sugerencias.
-			</p>
-			<p>
-				Si quieres recomendarme donde buscar noticias, puedes hacerlo
-				aquí: <a href='/help/'>Ayuda a Ottagua</a>
-			</p>
-		</div>
+<section class="flex justify-center items-center w-full" id="signup">
+	<div class="max-w-[1240px] w-full mx-auto px-4 py-16">
+		<div class="flex flex-col items-center justify-center w-full max-w-3xl mx-auto">
+			<h3 class="text-red text-2xl font-semibold mb-8 text-center">Suscríbete</h3>
+			
+			<div class="flex md:flex-row flex-col items-center justify-center gap-12 w-full">
+				<div class="md:w-1/2 w-full">
+					<div class="max-w-md mx-auto">
+						<p class="text-red text-lg mb-4">
+							Por el momento, tengo pensado escribir sobre inmigración,
+							restaurantes nuevos o eventos organizados por las embajadas de
+							nuestros países. También me gustaría incluir torneos deportivos
+							o fiestas pero quiero conocer tu opinión. Estoy abierto a todas
+							las sugerencias.
+						</p>
+						<p class="text-red text-lg">
+							Si quieres recomendarme donde buscar noticias, puedes hacerlo
+							aquí: <a href='/help/' class="text-red underline hover:text-red-accent transition-colors">Ayuda a Ottagua</a>
+						</p>
+					</div>
+				</div>
 
-		<div class='form-container'>
-			<form class='signup-form' id="plunk-form">
-				<input type="hidden" name="event" value="subscription" />
-				<input type="hidden" name="redirect" value="/" />
-				<div class='form-group'>
-					<label for='email'>Correo electrónico</label>
-					<input type='email' name='email' placeholder='tu@email.com' required />
+				<div class="md:w-1/2 w-full">
+					<div class="max-w-md mx-auto rounded-lg p-5 border border-red bg-cream">
+						<form class="flex flex-col gap-3" id="plunk-form">
+							<input type="hidden" name="event" value="subscription" />
+							<input type="hidden" name="redirect" value="/" />
+							<div class="flex flex-col gap-1">
+								<label for="email-input" class="text-sm text-red">Correo electrónico</label>
+								<input 
+									id="email-input"
+									type="email" 
+									name="email" 
+									placeholder="tu@email.com" 
+									required 
+									autocomplete="email"
+									class="py-2 px-4 border border-red rounded-full text-sm outline-none transition-colors focus:border-red-accent"
+								/>
+							</div>
+							<div class="flex flex-col gap-1">
+								<label for="name-input" class="text-sm text-red">Nombre (opcional)</label>
+								<input 
+									id="name-input"
+									type="text" 
+									name="name" 
+									placeholder="Tu nombre" 
+									autocomplete="name"
+									class="py-2 px-4 border border-red rounded-full text-sm outline-none transition-colors focus:border-red-accent"
+								/>
+							</div>
+							<button 
+								type="submit" 
+								class="bg-red text-cream py-2 px-6 border-none rounded-full cursor-pointer text-sm transition-colors hover:bg-red-accent mt-1"
+							>
+								Suscríbete
+							</button>
+							
+						</form>
+					</div>
 				</div>
-				<div class='form-group'>
-					<label for='name'>Nombre (opcional)</label>
-					<input type='text' name='name' placeholder='Tu nombre' />
-				</div>
-				<button type='submit' class='submit-button'>Suscríbete</button>
-				<div id="form-message" class="form-message"></div>
-			</form>
+			</div>
 		</div>
-	</main>
+	</div>
 </section>
 
-<style>
-	.signup {
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		width: 100%;
-	}
-
-	main {
-		display: flex;
-		flex-direction: row;
-		align-items: top;
-		justify-content: center;
-		flex: 1;
-		gap: var(--space-lg);
-	}
-
-	h3 {
-		text-align: center;
-		margin-bottom: var(--space-lg);
-		color: var(--red);
-	}
-
-	p {
-		color: var(--red);
-		max-width: 24.444rem;
-		font-size: var(--font-sm);
-	}
-
-	.form-container {
-		align-self: center;
-		max-width: 24.444rem;
-		width: 100%;
-		border-radius: var(--radius-lg);
-		padding: var(--space-lg);
-		border: 1px solid var(--red);
-		background-color: var(--cream);
-	}
-
-	.signup-form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-md);
-	}
-
-	.form-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-xs);
-	}
-
-	label {
-		font-size: var(--font-sm);
-		color: var(--red);
-	}
-
-	input {
-		padding: 0.5rem 1rem;
-		border: 1px solid var(--red);
-		border-radius: 1.5rem;
-		font-size: var(--font-sm);
-		outline: none;
-		transition: border-color 0.2s ease;
-	}
-
-	input:focus {
-		border-color: var(--red-accent);
-	}
-
-	.submit-button {
-		background-color: var(--red);
-		color: var(--cream);
-		padding: 0.5rem 1.5rem;
-		border: none;
-		border-radius: 1.5rem;
-		cursor: pointer;
-		font-size: var(--font-sm);
-		transition: background-color 0.2s ease;
-	}
-
-	.submit-button:hover {
-		background-color: var(--red-accent);
-	}
-
-	.form-message {
-		text-align: center;
-		font-size: var(--font-sm);
-		margin-top: 1rem;
-		font-weight: 500;
-		height: 1.5rem;
-		color: var(--red);
-	}
-
-	@media screen and (max-width: 600px) {
-		main {
-			flex-direction: column;
-			& p {
-				font-size: var(--font-base);
-			}
-		}
-
-		.form-container {
-			width: 100%;
-		}
-	}
-</style>
+<!-- All styling now handled by Tailwind classes -->
 
 <script>
   // Get the API key from the window object
   
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('plunk-form') as HTMLFormElement;
-    const messageDiv = document.getElementById('form-message');
-    
-    if (!form || !messageDiv) return;
+    if (!form) return;
     
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -172,8 +94,7 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
       // Check if email is provided
       const emailValue = formData.get('email');
       if (!emailValue) {
-        messageDiv.textContent = 'Error: El correo electrónico es requerido';
-        messageDiv.style.color = 'var(--red-accent)';
+        alert('Error: El correo electrónico es requerido');
         return;
       }
       
@@ -204,36 +125,26 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
         });
         
         if (response.ok) {
-          // Success - redirect to home page or show success message
-          messageDiv.textContent = '¡Gracias por suscribirte!';
-          messageDiv.style.color = 'var(--red)';
+          // Success - reset form and redirect to the gracias page
           form.reset();
-          
-          // Redirect to the gracias page
           window.location.href = '/gracias';
         } else {
           // Handle error
           const errorData = await response.json();
           console.error('Submission error:', errorData);
           
-          // Show user-friendly error message
+          // Show user-friendly error message as an alert
           if (errorData.message && errorData.message.includes('Email is required')) {
-            messageDiv.textContent = 'Error: El correo electrónico es requerido';
+            alert('Error: El correo electrónico es requerido');
           } else {
-            messageDiv.textContent = `Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud'}`;
+            alert(`Error: ${errorData.message || 'Hubo un problema al procesar tu solicitud'}`);
           }
-          messageDiv.style.color = 'var(--red-accent)';
         }
       } catch (error) {
-        // Handle network errors
-        messageDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo más tarde.';
-        messageDiv.style.color = 'var(--red-accent)';
+        // Handle network errors with alert
+        alert('Error de conexión. Por favor, intenta de nuevo más tarde.');
         console.error('Submission error:', error);
       }
     });
   });
 </script>
-
-
-
-

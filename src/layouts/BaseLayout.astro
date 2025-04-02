@@ -7,23 +7,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <!doctype html>
-<html lang='es-Mx'>
+<html lang='es-Mx' class="scroll-smooth" style="font-size: 18px;">
 	<head>
 		<BaseHead title={title || SITE_TITLE} description={SITE_DESCRIPTION} />
-
-		<style>
-			@media screen and (max-width: 600px) {
-				section {
-					margin-top: 100px;
-				}
-			}
-		</style>
 	</head>
-	<body>
+	<body class="bg-cream text-red font-sans antialiased max-w-[2200px] mx-auto">
 		<Header title={SITE_TITLE} />
-		<section>
+		<div class="flex justify-center w-full pt-20 md:pt-24 lg:pt-28">
 			<slot />
-		</section>
+		</div>
 		<Footer />
 
 		<!-- Google Tag Manager (noscript) -->

@@ -2,24 +2,7 @@
 const { icon, text } = Astro.props;
 ---
 
-<li>
-	<i class={icon}></i>
-	<span>{text}</span>
+<li class="flex items-center mb-4 text-inherit">
+	<i class={`${icon} text-xl md:text-2xl mr-4`}></i>
+	<span class="text-lg">{text}</span>
 </li>
-
-<style>
-	li {
-		display: flex;
-		align-items: center;
-		margin-bottom: var(--space-xs);
-	}
-
-	li i {
-		margin-right: var(--space-md);
-		font-size: var(--font-lg);
-	}
-
-	li span {
-		font-size: var(--font-base);
-	}
-</style>
