@@ -16,7 +16,7 @@ const { title, pubDate, updatedDate, heroImage, currentSlug, allPosts } = Astro.
 <BaseLayout>
 	<main class="w-full">
 		<!-- Full-width hero image container -->
-		<div class="w-full max-w-full mb-8 overflow-hidden">
+		<div class="overflow-hidden mb-8 w-full max-w-full">
 			<div class="max-w-[1800px] mx-auto px-4 flex justify-center">
 				{
 					heroImage && (
@@ -34,14 +34,14 @@ const { title, pubDate, updatedDate, heroImage, currentSlug, allPosts } = Astro.
 
 		<!-- Content container with 1240px max width -->
 		<div class="max-w-[1240px] mx-auto px-4">
-			<article class="text-red max-w-prose mx-auto leading-7">
+			<article class="mx-auto max-w-prose leading-7 text-red">
 				<div class="flex flex-col items-start mb-8">
-					<h1 class="text-4xl font-bold leading-tight mb-4">{title}</h1>
+					<h1 class="mb-4 text-4xl font-bold leading-tight">{title}</h1>
 					<div class="text-left">
 						<FormattedDate date={pubDate} />
 						{
 							updatedDate && (
-								<div class="text-sm mt-1">
+								<div class="mt-1 text-sm">
 									Last updated on{" "}
 									<FormattedDate date={updatedDate} />
 								</div>
@@ -50,7 +50,7 @@ const { title, pubDate, updatedDate, heroImage, currentSlug, allPosts } = Astro.
 					</div>
 				</div>
 
-				<div class="prose prose-red prose-headings:text-red prose-headings:font-bold prose-headings:leading-tight prose-h1:text-4xl prose-h1:mt-0 prose-h1:mb-8 prose-h2:text-3xl prose-h2:mb-6 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-p:my-5 prose-p:leading-7 prose-p:text-lg prose-a:text-red prose-a:underline prose-a:decoration-2 prose-a:underline-offset-4 prose-a:font-medium prose-a:transition-colors prose-a:hover:text-red-accent prose-blockquote:my-8 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:border-l-4 prose-blockquote:border-red-accent prose-blockquote:italic prose-blockquote:text-red-accent prose-blockquote:rounded-lg prose-blockquote:bg-red-50/5 prose-ul:my-6 prose-ul:pl-6 prose-ol:my-6 prose-ol:pl-6 prose-li:my-3 prose-li:pl-1.5 prose-li:leading-7 prose-li:text-lg prose-img:my-8 prose-figure:my-8 prose-figcaption:mt-3 prose-figcaption:text-sm prose-figcaption:text-red-accent">
+				<div class="prose">
 					<slot />
 				</div>
 				
@@ -63,3 +63,89 @@ const { title, pubDate, updatedDate, heroImage, currentSlug, allPosts } = Astro.
 </BaseLayout>
 
 <!-- All styling now handled by Tailwind Typography plugin modifiers in the markup -->
+
+
+<style>
+	/* Blogpost-specific styles for Markdown/MDX content */
+  
+  .prose {
+	/* Tailwind Typography plugin color overrides */
+	--tw-prose-body: var(--red, #f80b01) !important;
+	--tw-prose-headings: var(--red, #f80b01) !important;
+	--tw-prose-links: var(--red-accent, #f85c4d) !important;
+	--tw-prose-bold: var(--red, #f80b01) !important;
+	--tw-prose-counters: var(--red, #f80b01) !important;
+	--tw-prose-bullets: var(--red, #f80b01) !important;
+	--tw-prose-hr: var(--red, #f80b01) !important;
+	--tw-prose-quotes: var(--red-accent, #f85c4d) !important;
+	--tw-prose-quote-borders: var(--red-accent, #f85c4d) !important;
+	--tw-prose-captions: var(--red, #f80b01) !important;
+	--tw-prose-code: var(--red, #f80b01) !important;
+	--tw-prose-pre-code: var(--red, #f80b01) !important;
+	--tw-prose-pre-bg: var(--cream, #f1f5e7) !important;
+	--tw-prose-th-borders: var(--red, #f80b01) !important;
+	--tw-prose-td-borders: var(--red, #f80b01) !important;
+  }
+  
+  
+  
+  .prose ul > li::marker,
+  .prose ol > li::marker {
+	color: var(--red, #f80b01) !important;
+  }
+  
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+	font-family: 'Geist Sans', sans-serif;
+	color: var(--red, #f80b01);
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+	font-weight: 700;
+  }
+  
+  .prose p, .prose li {
+  font-family: 'Inter Variable', sans-serif;
+  color: var(--red, #f80b01);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+
+.prose ol, .prose ul {
+  font-family: 'Inter Variable', sans-serif;
+  color: var(--red, #f80b01);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+  
+  .prose a {
+	color: var(--red, #f80b01);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	text-decoration-thickness: 2px;
+  }
+  
+  .prose blockquote {
+	background: rgba(248, 92, 77, 0.07);
+	border-left: 4px solid var(--red-accent, #f85c4d);
+	padding: 1.5em 2em;
+	margin: 2em 0;
+	border-radius: var(--radius-md, 1rem);
+  }
+  
+  .prose ul, .prose ol {
+	margin-bottom: 1.5em;
+	padding-left: 2em;
+	line-height: 1.7;
+  }
+  
+  .prose hr {
+	border: none;
+	border-top: 2px solid var(--red, #f80b01);
+	margin: 2.5em 0;
+  }
+  
+  /* Add more blog-specific styles as needed */
+  
+  </style>

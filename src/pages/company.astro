@@ -3,79 +3,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-	<div class='company'>
-		<main>
-			<h2>¿Tienes una empresa latina en Ottawa?</h2>
-		</main>
+  <div class="px-4 py-8 mx-auto max-w-prose rounded-xl company bg-cream">
+    <main>
+      <h2 class="mb-8 text-3xl md:text-4xl font-bold text-center text-red">¿Tienes una empresa latina en Ottawa?</h2>
+    </main>
 
-		<main>
-			<div class='info'>
-				<p>
-					Por ahora, solo estoy recolectando los datos para crear un
-					directorio de negocios latinos en Ottawa.
-				</p>
-				<p>
-					Si tienes un negocio que quieras que aparezca en el
-					directorio cuando haga el lanzamiento por favor deja los
-					datos en este formulario.
-				</p>
-				<p>
-					Me gustaría crear una manera en que empresas, sobre todo
-					nuevos emprendimientos, puedan conectar con la comunidad
-					latina.
-				</p>
-			</div>
-			<div class='iframecontainer'>
-				<iframe
-					data-tally-src='https://tally.so/embed/nGloXe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
-					loading='lazy'
-					width='100%'
-					height='600'
-					frameborder='0'
-					marginheight='0'
-					marginwidth='0'
-					title='Directorio Empresas Ottagua'></iframe>
-			</div>
-		</main>
-	</div>
+    <main>
+      <div class="mb-8 space-y-6 info">
+        <p class="text-base leading-6 text-red">Por ahora, solo estoy recolectando los datos para crear un directorio de negocios latinos en Ottawa.</p>
+        <p class="text-base leading-6 text-red">Si tienes un negocio que quieras que aparezca en el directorio cuando haga el lanzamiento por favor deja los datos en este formulario.</p>
+        <p class="text-base leading-6 text-red">Me gustaría crear una manera en que empresas, sobre todo nuevos emprendimientos, puedan conectar con la comunidad latina.</p>
+      </div>
+      <div class="iframecontainer">
+        <iframe
+          data-tally-src='https://tally.so/embed/nGloXe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
+          loading='lazy'
+          width='100%'
+          height='600'
+          frameborder='0'
+          marginheight='0'
+          marginwidth='0'
+          title='Directorio Empresas Ottagua'
+		  ></iframe>
+      </div>
+    </main>
+  </div>
 </BaseLayout>
 
+
 <style>
-	.company {
-		color: var(--red);
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
-		flex-direction: column;
-		gap: 2rem;
-		max-width: 75.5rem;
-	}
-
-	main {
-		display: flex;
-		flex-direction: row;
-		align-items: top;
-		justify-content: center;
-		flex: 1;
-		gap: 2rem;
-	}
-
-	h2 {
-		text-align: center;
-		margin-bottom: 2rem;
-		color: var(--red);
-		max-width: 25ch;
-	}
-
-	p {
-		margin-bottom: 1rem;
-		color: var(--red);
-		max-width: 24.444rem;
-	}
-
 	.iframecontainer {
-		align-self: center;
-		max-width: 50rem;
+		max-width: 150rem;
 	}
 
 	@media screen and (max-width: 600px) {

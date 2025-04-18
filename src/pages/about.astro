@@ -6,80 +6,19 @@ import familia from "/src/assets/familia.jpg";
 ---
 
 <Page>
-	<h2>Quién está detrás de Ottagua</h2>
-	<p>
-		¡Hola! Bienvenidos a Ottagua, un espacio para mantener a la comunidad
-		latina de Ottawa y Gatineau informada. Por ahora, es un proyecto
-		individual pero con el tiempo espero que más personas se unan y pronto
-		sea un espacio para compartir experiencias, conocimientos y noticias.
-	</p>
-
-	<p>
-		Me llamo Luis Martínez y llegué a Ottawa hace dos años junto con mi
-		familia (mi esposa y nuestro hijo).
-	</p>
-
-	<p>
-		Cuando llegamos a Ottawa, conocimos a mucha gente que como nosotros
-		acababa de llegar. Algo que nos pasaba muy seguido era que nos
-		enterábamos tarde de los eventos. O que nuestros amigos colombianos
-		descubrían una taquería y nosotros, un restaurante paisa; pero no nos
-		decíamos pensando que ellos ya sabían de esto y viceversa.
-	</p>
-	<p>
-		Este segundo aňo, me he podido organizar más. Ahora ya se qué está
-		pasando casi siempre en Ottawa y Gatineau. También he descubierto más
-		restaurantes y negocios. Ya me me entero de los eventos antes de que
-		sucedan!
-	</p>
-
-	<Image src={familia} alt='familia' />
-
-	<p>
-		También he tenido la oportunidad de emprender nuevos proyectos como este
-		(Ottagua) o mi agencia de diseño web: <a
-			class='malomalo'
-			href='https://malomalo.ca/'>
-			<svg
-				width='36'
-				height='24'
-				viewBox='0 0 36 24'
-				fill='#f8f9fa'
-				xmlns='http://www.w3.org/2000/svg'
-				data-astro-cid-dmqpwcec=''>
-				<path
-					d='M9.79199 6.56008C9.79199 3.14773 12.5582 0.38147 15.9706 0.38147C16.5393 0.38147 17.0004 0.842513 17.0004 1.41124V19.7773C17.0004 21.7678 15.3867 23.3815 13.3962 23.3815H13.0777C11.2631 23.3815 9.79199 21.9104 9.79199 20.0958V6.56008Z'
-					fill='#f8f9fa'
-					data-astro-cid-dmqpwcec=''></path>
-				<path
-					d='M19.0132 6.56008C19.0132 3.14773 21.7794 0.38147 25.1918 0.38147C25.7605 0.38147 26.2216 0.842513 26.2216 1.41124V19.7773C26.2216 21.7678 24.6079 23.3815 22.6174 23.3815H22.2989C20.4842 23.3815 19.0132 21.9104 19.0132 20.0958V6.56008Z'
-					fill='#f8f9fa'
-					data-astro-cid-dmqpwcec=''></path>
-				<path
-					d='M28.2344 6.56008C28.2344 3.14773 31.0006 0.38147 34.413 0.38147C34.9817 0.38147 35.4427 0.842513 35.4427 1.41124V19.7773C35.4427 21.7678 33.8291 23.3815 31.8386 23.3815H31.5201C29.7054 23.3815 28.2344 21.9104 28.2344 20.0958V6.56008Z'
-					fill='#f8f9fa'
-					data-astro-cid-dmqpwcec=''></path>
-				<path
-					d='M0.570801 3.98566C0.570801 1.99512 2.18466 0.38147 4.17519 0.38147V0.38147C6.1655 0.38147 7.77918 1.99494 7.77918 3.98525V3.98525C7.77918 5.97556 6.16571 7.58903 4.1754 7.58903H1.60045C1.03179 7.58903 0.570801 7.12804 0.570801 6.55938V3.98566Z'
-					fill='#f8f9fa'
-					data-astro-cid-dmqpwcec=''></path>
-			</svg>
-
-			Malo/Malo
-		</a>
-	</p>
-
-	<p>
-		Por eso nace Ottagua: para ser ese espacio donde los latinos en Ottawa
-		puedan compartir noticias, negocios, reseñas y mucho más. Es un lugar
-		para encontrarnos, para conocernos, y para fortalecer nuestra presencia
-		en esta hermosa ciudad.
-	</p>
-
-	<p>
-		¡Te invito a unirte a Ottagua y a ser parte de esta emocionante
-		aventura!
-	</p>
+  <div class="px-4 py-8 mx-auto rounded-xl bg-cream">
+    <h2 class="mb-8 text-5xl md:text-6xl lg:text-7xl font-bold text-center text-red">¿Quién está detrás de Ottagua?</h2>
+    <div class="space-y-6 max-w-prose">
+      <p class="text-base leading-6 text-red">¡Hola! Bienvenidos a Ottagua, un espacio para mantener a la comunidad latina de Ottawa y Gatineau informada. Por ahora, es un proyecto individual pero con el tiempo espero que más personas se unan y pronto sea un espacio para compartir experiencias, conocimientos y noticias.</p>
+      <p class="text-base leading-6 text-red">Me llamo Luis Martínez y llegué a Ottawa hace dos años junto con mi familia (mi esposa y nuestro hijo).</p>
+      <p class="text-base leading-6 text-red">Cuando llegamos a Ottawa, conocimos a mucha gente que como nosotros acababa de llegar. Algo que nos pasaba muy seguido era que nos enterábamos tarde de los eventos. O que nuestros amigos colombianos descubrían una taquería y nosotros, un restaurante paisa; pero no nos decíamos pensando que ellos ya sabían de esto y viceversa.</p>
+      <p class="text-base leading-6 text-red">Este segundo aňo, me he podido organizar más. Ahora ya se qué está pasando casi siempre en Ottawa y Gatineau. También he descubierto más restaurantes y negocios. Ya me me entero de los eventos antes de que sucedan!</p>
+      <Image src={familia} alt='familia' class="my-8 w-full rounded-xl" />
+      <p class="text-base leading-6 text-red">También he tenido la oportunidad de emprender nuevos proyectos como este (Ottagua) o mi agencia de diseño web: <a href='https://summerdays.studio/' class="font-semibold underline underline-offset-4 decoration-2 hover:text-red-accent hover:underline hover:underline-offset-4">Summer Days Studio</a></p>
+      <p class="text-base leading-6 text-red">Por eso nace Ottagua: para ser ese espacio donde los latinos en Ottawa puedan compartir noticias, negocios, reseñas y mucho más. Es un lugar para encontrarnos, para conocernos, y para fortalecer nuestra presencia en esta hermosa ciudad.</p>
+      <p class="text-base leading-6 text-red">¡Te invito a unirte a Ottagua y a ser parte de esta emocionante aventura!</p>
+    </div>
+  </div>
 </Page>
 
 <style>
@@ -92,22 +31,6 @@ import familia from "/src/assets/familia.jpg";
 		aspect-ratio: 16/9;
 	}
 
-	.malomalo {
-		font-size: 0.9rem;
-		font-weight: 600;
-		color: #f8f9fa;
-		background-color: #212529;
-		border-radius: 2rem;
-		text-decoration: none;
-		padding: 0.25rem 1.25rem;
-		font-weight: 300;
-		display: inline-flex;
-		width: fit-content;
-		border-bottom: none;
-		gap: 0.5rem;
-		transform: translateY(0.3rem);
-		&:hover {
-			background-color: var(--red);
-		}
-	}
+	
+	
 </style>

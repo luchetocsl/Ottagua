@@ -2,17 +2,17 @@
 const today = new Date();
 ---
 
-<footer class="bg-red flex flex-col rounded-t-3xl py-6 items-center text-sm text-cream mt-16">
+<footer class="flex flex-col items-center py-6 mt-16 text-sm rounded-t-3xl bg-red text-cream">
 	<div class="max-w-[1240px] w-full px-4 mx-auto">
-		<div class="flex flex-col items-center justify-center w-full gap-4 py-2">
-			<div class="flex flex-row justify-center gap-8">
-				<a href='/#signup' class="text-cream no-underline hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4 transition-colors duration-200">Suscríbete</a>
-				<a href='/about/' class="text-cream no-underline hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4 transition-colors duration-200">Sobre Ottagua</a>
-				<a href='/help/' class="text-cream no-underline hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4 transition-colors duration-200">Coopera con Ottagua</a>
-				<a href='/unsubscribe/' class="text-cream no-underline hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4 transition-colors duration-200">Cancelar suscripción</a>
+		<div class="flex flex-col gap-4 justify-center items-center py-2 w-full">
+			<div class="flex flex-row gap-8 justify-center">
+				<a href='/#signup' class="no-underline transition-colors duration-200 text-cream hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4">Suscríbete</a>
+				<a href='/about/' class="no-underline transition-colors duration-200 text-cream hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4">Sobre Ottagua</a>
+				<a href='/help/' class="no-underline transition-colors duration-200 text-cream hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4">Coopera con Ottagua</a>
+				<a href='/unsubscribe/' class="no-underline transition-colors duration-200 text-cream hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4">Cancelar suscripción</a>
 			</div>
 			
-			<p>&copy; {today.getFullYear()} Ottagua. All rights reserved.</p>
+			<p class="no-underline text-cream bg-red" >&copy; {today.getFullYear()} Ottagua. All rights reserved.</p>
 		</div>
 	</div>
 </footer>
