@@ -9,68 +9,42 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
   window.PLUNK_API_KEY = PLUNK_API_KEY;
 </script>
 
-<section class="flex justify-center items-center w-full" id="signup">
-	<div class="max-w-[1240px] w-full mx-auto px-4 py-16">
-		<div class="flex flex-col justify-center items-center mx-auto w-full max-w-3xl">
-			<h3 class="mb-8 text-5xl md:text-6xl lg:text-7xl font-bold text-center text-red">Suscríbete</h3>
-			
-			<div class="flex flex-col gap-12 justify-center items-center w-full md:flex-row">
-				<div class="w-full md:w-1/2">
-					<div class="mx-auto max-w-md">
-						<p class="mb-4 text-lg text-red">
-							Por el momento, tengo pensado escribir sobre inmigración,
-							restaurantes nuevos o eventos organizados por las embajadas de
-							nuestros países. También me gustaría incluir torneos deportivos
-							o fiestas pero quiero conocer tu opinión. Estoy abierto a todas
-							las sugerencias.
-						</p>
-						<p class="text-lg text-red">
-							Si quieres recomendarme donde buscar noticias, puedes hacerlo
-							aquí: <a href='/help/' class="underline transition-colors text-red hover:text-red-accent">Ayuda a Ottagua</a>
-						</p>
+<section class="flex overflow-hidden justify-center items-center my-16 w-full signupform" id="signup">
+  <div class="max-w-[1240px] w-full mx-auto px-4">
+    <div class="flex flex-col justify-center items-center mx-auto w-full">
+      <div class="p-12 mx-auto max-w-xl">
+        <h3 class="mb-8 text-5xl font-bold text-center md:text-6xl text-red">Suscríbete</h3>
+        <p class="mb-6 leading-relaxed text-center text-red">
+          Por el momento, tengo pensado escribir sobre inmigración,
+          restaurantes nuevos o eventos organizados por las embajadas de
+          nuestros países. También me gustaría incluir torneos deportivos
+          o fiestas pero quiero conocer tu opinión. Estoy abierto a todas
+          las sugerencias.
+        </p>
+        <form class="flex flex-col gap-6" id="hero-form">
+          <input type="hidden" name="event" value="subscription" />
+          <input type="hidden" name="redirect" value="/"/>
+          <div class="flex flex-col gap-6 md:flex-row">
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="tu@email.com" 
+              required 
+              class="flex-1 px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red text-red focus:border-red-accent"
+            />
+            <button 
+              type="submit" 
+              class="inline-flex gap-1 justify-center items-center px-6 py-2 text-sm rounded-full border-none transition-all cursor-pointer w-fit bg-red text-cream hover:bg-red-accent"
+            >
+              Suscríbete <i class='ri-arrow-right-up-line'></i>
+                </button>
+              </div>
+              <div id="hero-form-message" class="h-4 text-xs"></div>
+            </form>
 					</div>
 				</div>
 
-				<div class="w-full md:w-1/2">
-					<div class="p-5 mx-auto max-w-md rounded-lg border border-red bg-cream">
-						<form class="flex flex-col gap-3" id="plunk-form">
-							<input type="hidden" name="event" value="subscription" />
-							<input type="hidden" name="redirect" value="/" />
-							<div class="flex flex-col gap-1">
-								<label for="name-input" class="text-sm text-red">Nombre (opcional)</label>
-								<input 
-									id="name-input"
-									type="text" 
-									name="name" 
-									placeholder="Tu nombre" 
-									autocomplete="name"
-									class="px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red focus:border-red-accent"
-								/>
-							</div>
-              
-              <div class="flex flex-col gap-1">
-								<label for="email-input" class="text-sm text-red">Correo electrónico</label>
-								<input 
-									id="email-input"
-									type="email" 
-									name="email" 
-									placeholder="tu@email.com" 
-									required 
-									autocomplete="email"
-									class="px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red focus:border-red-accent"
-								/>
-							</div>
-							
-							<button 
-								type="submit" 
-								class="px-6 py-2 mt-1 text-sm rounded-full border-none transition-colors cursor-pointer bg-red text-cream hover:bg-red-accent"
-							>
-								Suscríbete
-							</button>
-							
-						</form>
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -148,5 +122,27 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
         console.error('Submission error:', error);
       }
     });
+  });
+</script>
+
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    gsap.from(".signupform", {
+      scrollTrigger: {
+        trigger: ".signupform",
+        start: "top 80%",
+        end: "top 40%",
+        scrub: 1,
+      },
+      y: 250,
+      opacity: 0,
+      ease: "power2.out",
+    });
+
   });
 </script>

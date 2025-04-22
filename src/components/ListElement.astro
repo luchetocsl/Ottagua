@@ -1,8 +1,8 @@
 ---
-const { icon, text } = Astro.props;
+const { icon, text, class: className = "" } = Astro.props;
 ---
 
-<li class="flex items-center mb-4 text-inherit">
+<li class={`flex items-center mb-4 text-inherit ${className}`}>
 	<i class={`${icon} text-xl md:text-2xl mr-4`}></i>
 	<span class="text-lg">{text}</span>
 </li>

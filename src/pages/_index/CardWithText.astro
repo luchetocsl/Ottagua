@@ -3,46 +3,61 @@ import Button from "../../components/Button.astro";
 
 import { Image } from "astro:assets";
 import city from "./../../assets/ottawa-parliament.jpg";
+
 ---
 
-<section class="bg-cream w-full flex items-center justify-center">
-	<div class="max-w-[1240px] mx-auto px-4 py-12 w-full">
-		<div class="flex flex-row items-center justify-center gap-8 md:flex-row sm:flex-col">
-			<div class="aspect-square flex items-center flex-shrink-0 md:w-1/2">
-				<Image src={city} alt='Image by DEZALB from Pixabay' class="w-full h-full object-cover rounded-xl" />
-			</div>
-			<div class="text-red max-w-xl flex flex-col gap-4">
-				<h2 class="text-3xl md:text-4xl font-bold mb-8">
-					Todo lo que me hubiera gustado saber antes de mudarme a Ottawa
-				</h2>
-				<p class="max-w-md text-lg">
-					<b
-						>Descubre cómo sobrevivir al frío, qué hacer los fines de
-						semana, y cómo encontrar un equipo de fútbol en Ottawa.</b
-					>
-				</p>
-				<p class="max-w-md text-lg">
-					Cada semana, comparto los tips y trucos que he aprendido (y los
-					que me han dado) para disfrutar al máximo la vida en la capital
-					de Canadá.
-				</p>
-				<div class="mt-2">
-					<Button title='Suscríbete' link='/#signup' variant='secondary' />
-				</div>
-			</div>
-		</div>
-	</div>
+<section class="my-16 w-full bg-cream">
+  <div class="max-w-[1240px] mx-auto flex flex-col md:flex-row gap-8 items-center rounded-xl bg-cream py-16">
+    <div class="flex flex-shrink-0 items-center md:w-2/3 sm:w-full">
+      <Image src={city} alt='Ottawa Parliament Building Image by DEZALB from Pixabay' class="object-cover w-full h-full rounded-xl animated-image" />
+    </div>
+    <div class="flex flex-col gap-8 max-w-xl text-red info">
+      <p class="mb-6 max-w-md text-lg leading-relaxed">
+        Descubre cómo sobrevivir al frío, qué hacer los fines de semana, y cómo encontrar un equipo de fútbol en Ottawa.
+
+      </p>
+      <p class="mb-6 max-w-md text-lg leading-relaxed">
+        Cada semana, comparto los tips y trucos que he aprendido (y los que me han dado) para disfrutar al máximo la vida en la capital de Canadá.
+      </p>
+      <div class="mt-4">
+        <Button title='Suscríbete' link='/#signup' variant='secondary' />
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- All styling now handled by Tailwind classes -->
-<style>
-	@media screen and (max-width: 600px) {
-		[class*="flex-row"] {
-			@apply flex-col;
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.set('.animated-image', {
+      clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"
+    });
+
+    gsap.to('.animated-image', {
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      ease: "power2.out",
+	  y: 50,
+      scrollTrigger: {
+        trigger: '.animated-image',
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      }
+    });
+
+	gsap.from('.info', {
+		y: 250,
+		opacity: 0,
+		ease: "power2.out",
+		scrollTrigger: {
+			trigger: '.info',
+			start: "top 80%",
+			end: "bottom 60%",
+			scrub: 2,
 		}
-		
-		[class*="aspect-square"] {
-			@apply w-full;
-		}
-	}
-</style>
+	});
+  });
+</script>

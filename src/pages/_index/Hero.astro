@@ -10,43 +10,39 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
   window.PLUNK_API_KEY = PLUNK_API_KEY;
 </script>
 
-<section class="bg-cream w-full min-h-[70vh] flex items-center">
-	<main class="flex justify-end items-center h-full w-full max-w-[1240px] mx-auto px-4">
-		<div class="flex flex-col gap-6 p-8 mr-8 ml-auto max-w-3xl text-red md:mr-16 lg:mr-24">
-			<h1 class="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">La guía de supervivencia para latinos en Ottawa</h1>
-			<p class="max-w-lg text-lg">
-				Suscríbete al único newsletter con todo lo que necesitas saber
-				para sobrevivir a la Capital de Canadá.
-			</p>
-			<form class="flex flex-col gap-2 max-w-md" id="hero-form">
-				<input type="hidden" name="event" value="subscription" />
-				<input type="hidden" name="redirect" value="/"/>
-				<div class="flex flex-col gap-2 md:flex-row">
-					<input 
-						type="text" 
-						name="name" 
-						placeholder="Tu nombre (opcional)" 
-						class="flex-1 px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red text-red focus:border-red-accent"
-					/>
-          <input 
-						type="email" 
-						name="email" 
-						placeholder="tu@email.com" 
-						required 
-						class="flex-1 px-4 py-2 text-sm rounded-full border transition-colors outline-none border-red text-red focus:border-red-accent"
-					/>
-          
-					<button 
-						type="submit" 
-						class="inline-flex gap-1 justify-center items-center px-6 py-2 text-sm rounded-full border-none transition-all cursor-pointer w-fit bg-red text-cream hover:bg-red-accent"
-					>
-						Suscríbete <i class='ri-arrow-right-up-line'></i>
-					</button>
-				</div>
-				<div id="hero-form-message" class="h-4 text-xs"></div>
-			</form>
-		</div>
-	</main>
+<section class="bg-cream min-h-[70vh] flex items-center">
+  <main class="w-full max-w-[1240px] mx-auto px-4 flex justify-center items-center">
+    <div class="flex flex-col gap-4 items-center w-2/3 text-red">
+      <h1 class="text-5xl font-bold leading-tight text-center md:text-6xl lg:text-7xl">
+        La guía de supervivencia para latinos en Ottawa
+      </h1>
+      <div class="flex flex-col gap-8 items-center w-full">
+        <p class="max-w-md text-lg text-center">
+          Suscríbete para aprender cómo sobrevivir a la Capital de Canadá.
+        </p>
+        <form class="flex flex-col gap-1 w-full max-w-sm" id="hero-form">
+          <input type="hidden" name="event" value="subscription" />
+          <input type="hidden" name="redirect" value="/" />
+          <div class="flex flex-col gap-1 md:flex-row">
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="tu@email.com" 
+              required 
+              class="flex-1 px-3 py-1.5 text-xs rounded-full border transition-colors outline-none border-red text-red focus:border-red-accent"
+            />
+            <button 
+              type="submit" 
+              class="inline-flex gap-1 justify-center items-center px-4 py-1.5 text-xs rounded-full transition-all cursor-pointer bg-red text-cream hover:bg-red-accent"
+            >
+              Suscríbete <i class='ri-arrow-right-up-line'></i>
+            </button>
+          </div>
+          <div id="hero-form-message" class="h-4 text-xs"></div>
+        </form>
+      </div>
+    </div>
+  </main>
 </section>
 
 <!-- All styling now handled by Tailwind classes -->
