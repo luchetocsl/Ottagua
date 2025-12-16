@@ -1,12 +1,12 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import { slugify } from "../../utils/slug";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	const posts = await getCollection("blog");
 	return posts.map((post) => {
-		const slug = (post.data.slug || post.slug).replace(/\s+/g, '-');
+		const slug = slugify(post.data.slug || post.slug);
 		return {
 			params: { slug },
 			props: {
@@ -18,19 +18,15 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-	post: CollectionEntry<'blog'>;
-	allPosts: CollectionEntry<'blog'>[];
+	post: CollectionEntry<"blog">;
+	allPosts: CollectionEntry<"blog">[];
 }
 
 const { post, allPosts } = Astro.props;
 const { Content } = await post.render();
-const currentSlug = (post.data.slug || post.slug).replace(/\s+/g, '-');
+const currentSlug = slugify(post.data.slug || post.slug);
 ---
 
-<BlogPost {...post.data} currentSlug={currentSlug} allPosts={allPosts} >
-
-		<Content />
-
+<BlogPost {...post.data} currentSlug={currentSlug} allPosts={allPosts}>
+	<Content />
 </BlogPost>
-
-

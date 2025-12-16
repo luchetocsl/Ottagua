@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { slugify } from "../../utils/slug";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -12,31 +13,49 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout>
-	<div class="max-w-[1240px] mx-auto px-4 py-16">
+	<div class='max-w-[1240px] mx-auto px-4 py-16'>
 		<main>
-			<ul class="grid gap-16 md:grid-cols-2 lg:grid-cols-3">
+			<ul class='grid gap-16 md:grid-cols-2 lg:grid-cols-3'>
 				{
-					posts.map((post, index) => (
-						<li class={`list-none ${index === 0 ? 'md:col-span-2' : ''}`}>
-							<a href={`/blog/${post.slug}/`} class="no-underline block">
-								<div class="w-full aspect-[2/1] overflow-hidden rounded-lg mb-4 relative">
-									<img
-										class="w-full h-full object-cover"
-										src={typeof post.data.heroImage === 'string' ? post.data.heroImage : post.data.heroImage?.src || ''}
-										alt={post.data.title || 'Blog post image'}
-									/>
-									<div class="absolute top-3 right-3 bg-cream text-red text-xs font-medium py-1 px-3 rounded-full">
-										<FormattedDate
-											date={post.data.pubDate}
+					posts.map((post, index) => {
+						const slug = slugify(post.data.slug || post.slug);
+						return (
+							<li
+								class={`list-none ${index === 0 ? "md:col-span-2" : ""}`}>
+								<a
+									href={`/blog/${slug}/`}
+									class='no-underline block'>
+									<div class='w-full aspect-[2/1] overflow-hidden rounded-lg mb-4 relative'>
+										<img
+											class='w-full h-full object-cover'
+											src={
+												typeof post.data.heroImage ===
+												"string"
+													? post.data.heroImage
+													: post.data.heroImage
+															?.src || ""
+											}
+											alt={
+												post.data.title ||
+												"Blog post image"
+											}
 										/>
+										<div class='absolute top-3 right-3 bg-cream text-red text-xs font-medium py-1 px-3 rounded-full'>
+											<FormattedDate
+												date={post.data.pubDate}
+											/>
+										</div>
 									</div>
-								</div>
-								<div class="flex flex-col">
-									<h3 class={`font-semibold text-red no-underline m-0 ${index === 0 ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'}`}>{post.data.title}</h3>
-								</div>
-							</a>
-						</li>
-					))
+									<div class='flex flex-col'>
+										<h3
+											class={`font-semibold text-red no-underline m-0 ${index === 0 ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}>
+											{post.data.title}
+										</h3>
+									</div>
+								</a>
+							</li>
+						);
+					})
 				}
 			</ul>
 		</main>
