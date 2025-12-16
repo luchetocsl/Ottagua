@@ -5,13 +5,16 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: {
-			post,
-			allPosts: posts,
-		},
-	}));
+	return posts.map((post) => {
+		const slug = (post.data.slug || post.slug).replace(/\s+/g, '-');
+		return {
+			params: { slug },
+			props: {
+				post,
+				allPosts: posts,
+			},
+		};
+	});
 }
 
 interface Props {
@@ -21,9 +24,10 @@ interface Props {
 
 const { post, allPosts } = Astro.props;
 const { Content } = await post.render();
+const currentSlug = (post.data.slug || post.slug).replace(/\s+/g, '-');
 ---
 
-<BlogPost {...post.data} currentSlug={post.slug} allPosts={allPosts} >
+<BlogPost {...post.data} currentSlug={currentSlug} allPosts={allPosts} >
 
 		<Content />
 
