@@ -4,22 +4,53 @@ import ListElement from "../../components/ListElement.astro";
 import "remixicon/fonts/remixicon.css";
 ---
 
-<section class="my-16 w-full">
-  <div class="max-w-[1240px] red-bg mx-auto p-12 w-full bg-red text-cream rounded-xl flex flex-row gap-8">
-    <h3 class="mb-8 w-1/2 text-6xl font-bold text-left md:text-6xl md:text-left text-cream">¿Por qué suscribirse?</h3>
-    <div class="flex flex-col-reverse gap-8 justify-between items-stretch w-1/2 md:flex-row">
-      <div class="flex flex-col items-center px-8 py-8 w-full text-cream">
-        <h4 class="mb-8 w-full text-xl font-medium text-center md:text-left text-cream">Suscriptores</h4>
-				<ul class="flex-grow mb-6 w-full leading-relaxed">
-          			<ListElement class="benefit-item" icon='ri-mail-open-line' text='Consejos para pasarla lo mejor posible en Ottawa' />
-					<ListElement class="benefit-item" icon='ri-list-indefinite' text='Directorio de empresas de Ottagua (Próximamente)' />
-					<ListElement class="benefit-item" icon='ri-restaurant-line' text='Recomendaciones de restaurantes' />
-					<ListElement class="benefit-item" icon='ri-candle-line' text='Recomendaciones de cosas que hacer en la ciudad' />
-					<ListElement class="benefit-item" icon='ri-money-dollar-circle-line' text='Es gratis' />
+<section class='my-16 w-full'>
+	<div
+		class='max-w-[1240px] red-bg mx-auto p-12 w-full bg-red text-cream rounded-xl flex flex-row gap-8'>
+		<h3
+			class='mb-8 w-1/2 text-6xl font-bold text-left md:text-6xl md:text-left text-cream'>
+			¿Por qué suscribirse?
+		</h3>
+		<div
+			class='flex flex-col-reverse gap-8 justify-between items-stretch w-1/2 md:flex-row'>
+			<div class='flex flex-col items-center px-8 py-8 w-full text-cream'>
+				<h4
+					class='mb-8 w-full text-xl font-medium text-center md:text-left text-cream'>
+					Suscriptores
+				</h4>
+				<ul class='flex-grow mb-6 w-full leading-relaxed'>
+					<ListElement
+						class='benefit-item'
+						icon='ri-mail-open-line'
+						text='Consejos para pasarla lo mejor posible en Ottawa'
+					/>
+					<ListElement
+						class='benefit-item'
+						icon='ri-list-indefinite'
+						text='Directorio de empresas de Ottagua (Próximamente)'
+					/>
+					<ListElement
+						class='benefit-item'
+						icon='ri-restaurant-line'
+						text='Recomendaciones de restaurantes'
+					/>
+					<ListElement
+						class='benefit-item'
+						icon='ri-candle-line'
+						text='Recomendaciones de cosas que hacer en la ciudad'
+					/>
+					<ListElement
+						class='benefit-item'
+						icon='ri-money-dollar-circle-line'
+						text='Es gratis'
+					/>
 				</ul>
-				<div class="flex justify-center w-full">
-					<Button title='Suscríbete' link='/#signup' variant='secondary'>
-						<div slot="parent-bg-red"></div>
+				<div class='flex justify-center w-full'>
+					<Button
+						title='Suscríbete'
+						link='/#signup'
+						variant='secondary'>
+						<div slot='parent-bg-red'></div>
 					</Button>
 				</div>
 			</div>
@@ -28,50 +59,48 @@ import "remixicon/fonts/remixicon.css";
 </section>
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+	import gsap from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Animate the red-bg container on scroll
-    gsap.from(".red-bg", {
-      scrollTrigger: {
-        trigger: ".red-bg",
-        start: "top 80%",
-        end: "bottom 60%",
-        scrub: 1,
-      },
-      scale: 0.6,
-      opacity: 0,
-      ease: "power2.out",
-    });
+	document.addEventListener("DOMContentLoaded", function () {
+		// Animate the red-bg container on scroll
+		gsap.from(".red-bg", {
+			scrollTrigger: {
+				trigger: ".red-bg",
+				start: "top 80%",
+				end: "bottom 60%",
+				scrub: 1,
+			},
+			scale: 0.6,
+			opacity: 0,
+			ease: "power2.out",
+		});
 
-    // Animate the list items with a stagger, only when .red-bg is in view
-    gsap.from(".benefit-item", {
-      scrollTrigger: {
-        trigger: ".red-bg",
-        start: "top 80%",
-        toggleActions: "play none none none", // play only once when in view
-      },
-      y: 40,
-      opacity: 0,
-      stagger: 0.18,
-      duration: 0.7,
-      ease: "power2.out"
-    });
+		// Animate the list items with a stagger, only when .red-bg is in view
+		gsap.from(".benefit-item", {
+			scrollTrigger: {
+				trigger: ".red-bg",
+				start: "top 80%",
+				toggleActions: "play none none none", // play only once when in view
+			},
+			y: 40,
+			opacity: 0,
+			stagger: 0.18,
+			duration: 0.7,
+			ease: "power2.out",
+		});
 
-
-	gsap.from('h3', {
-		y: 250,
-		opacity: 0,
-		ease: "power2.out",
-		scrollTrigger: {
-			trigger: 'h3',
-			start: "top 80%",
-			end: "top 90%",
-			scrub: 2,
-		}
+		gsap.from("h3", {
+			y: 250,
+			opacity: 0,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: "h3",
+				start: "top 80%",
+				end: "top 90%",
+				scrub: 2,
+			},
+		});
 	});
-
-  });
 </script>
