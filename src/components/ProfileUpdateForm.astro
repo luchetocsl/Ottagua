@@ -2,145 +2,203 @@
 const { PLUNK_API_KEY } = Astro.props;
 ---
 
-<div class="w-full max-w-6xl px-4 py-8 mx-auto">
-  <div class="flex flex-col md:flex-row items-start justify-center gap-8 w-full">
-    <div class="md:pr-4 max-w-md w-full">
-      <h2 class="text-2xl font-semibold text-red mb-4">Personaliza tu perfil</h2>
-      <p class="mb-4 text-red leading-7 text-lg">
-        Ahora formas parte de la comunidad latina de Ottawa. Te enviaremos las
-        últimas noticias, eventos y recomendaciones directamente a tu correo.
-      </p>
-      <p class="mb-4 text-red leading-7 text-lg">
-        Puedes agregar más información para recibir contenido más relevante.
-      </p>
-    </div>
+<div class='px-4 py-8 mx-auto w-full max-w-6xl'>
+	<div
+		class='flex flex-col gap-8 justify-center items-start w-full md:flex-row'>
+		<div class='w-full max-w-md md:pr-4'>
+			<h2 class='mb-4 text-2xl font-semibold text-red'>
+				Personaliza tu perfil
+			</h2>
+			<p class='mb-4 text-lg leading-7 text-red'>
+				Ahora formas parte de la comunidad latina de Ottawa. Te
+				enviaremos las últimas noticias, eventos y recomendaciones
+				directamente a tu correo.
+			</p>
+			<p class='mb-4 text-lg leading-7 text-red'>
+				Puedes agregar más información para recibir contenido más
+				relevante.
+			</p>
+		</div>
 
-    <div class="w-full max-w-md">
-      <form class="flex flex-col gap-4 w-full p-4 bg-cream rounded-xl" id="profile-form">
-        <input type="hidden" name="event" value="profile_update" />
-        <div class="flex flex-col gap-1 mb-2">
-          <label for="email" class="form-label">Correo electrónico</label>
-          <input type="email" name="email" id="email" placeholder="tu@email.com" required class="form-input" />
-        </div>
-        <div class="flex flex-col gap-1 mb-2">
-          <label for="name" class="form-label">Nombre completo</label>
-          <input type="text" name="name" id="name" placeholder="Tu nombre" class="form-input" />
-        </div>
-        <div class="flex flex-col gap-1 mb-2">
-          <label for="nationality" class="form-label">Nacionalidad</label>
-          <select name="nationality" id="nationality" class="form-select">
-            <option value="">Selecciona tu país</option>
-            <option value="Argentina">Argentina</option>
-            <option value="Bolivia">Bolivia</option>
-            <option value="Chile">Chile</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Costa Rica">Costa Rica</option>
-            <option value="Cuba">Cuba</option>
-            <option value="Ecuador">Ecuador</option>
-            <option value="El Salvador">El Salvador</option>
-            <option value="España">España</option>
-            <option value="Guatemala">Guatemala</option>
-            <option value="Honduras">Honduras</option>
-            <option value="México">México</option>
-            <option value="Nicaragua">Nicaragua</option>
-            <option value="Panamá">Panamá</option>
-            <option value="Paraguay">Paraguay</option>
-            <option value="Perú">Perú</option>
-            <option value="Puerto Rico">Puerto Rico</option>
-            <option value="República Dominicana">República Dominicana</option>
-            <option value="Uruguay">Uruguay</option>
-            <option value="Venezuela">Venezuela</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-        <button type="submit" class="btn mx-auto">Actualizar perfil</button>
-        <div id="profile-form-message" class="mt-4 font-medium h-6 text-red text-sm text-center"></div>
-      </form>
-    </div>
-  </div>
+		<div class='w-full max-w-md'>
+			<form
+				class='flex flex-col gap-4 p-6 w-full rounded-xl bg-cream'
+				id='profile-form'>
+				<input type='hidden' name='event' value='profile_update' />
+				<div class='flex flex-col gap-1 mb-2'>
+					<label for='email' class='text-sm font-medium text-red'
+						>Correo electrónico</label
+					>
+					<input
+						type='email'
+						name='email'
+						id='email'
+						placeholder='tu@email.com'
+						required
+						class='px-4 py-2 w-full text-sm rounded-full border transition-colors outline-none border-red bg-white/80 text-red placeholder:text-red/40 focus:border-red-accent'
+					/>
+				</div>
+				<div class='flex flex-col gap-1 mb-2'>
+					<label for='name' class='text-sm font-medium text-red'
+						>Nombre completo</label
+					>
+					<input
+						type='text'
+						name='name'
+						id='name'
+						placeholder='Tu nombre'
+						class='px-4 py-2 w-full text-sm rounded-full border transition-colors outline-none border-red bg-white/80 text-red placeholder:text-red/40 focus:border-red-accent'
+					/>
+				</div>
+				<div class='flex flex-col gap-1 mb-2'>
+					<label
+						for='nationality'
+						class='text-sm font-medium text-red'>Nacionalidad</label
+					>
+					<select
+						name='nationality'
+						id='nationality'
+						class='px-4 py-2 w-full text-sm rounded-full border transition-colors outline-none border-red bg-white/80 text-red focus:border-red-accent'>
+						<option value=''>Selecciona tu país</option>
+						<option value='Argentina'>Argentina</option>
+						<option value='Bolivia'>Bolivia</option>
+						<option value='Chile'>Chile</option>
+						<option value='Colombia'>Colombia</option>
+						<option value='Costa Rica'>Costa Rica</option>
+						<option value='Cuba'>Cuba</option>
+						<option value='Ecuador'>Ecuador</option>
+						<option value='El Salvador'>El Salvador</option>
+						<option value='España'>España</option>
+						<option value='Guatemala'>Guatemala</option>
+						<option value='Honduras'>Honduras</option>
+						<option value='México'>México</option>
+						<option value='Nicaragua'>Nicaragua</option>
+						<option value='Panamá'>Panamá</option>
+						<option value='Paraguay'>Paraguay</option>
+						<option value='Perú'>Perú</option>
+						<option value='Puerto Rico'>Puerto Rico</option>
+						<option value='República Dominicana'
+							>República Dominicana</option
+						>
+						<option value='Uruguay'>Uruguay</option>
+						<option value='Venezuela'>Venezuela</option>
+						<option value='Otro'>Otro</option>
+					</select>
+				</div>
+				<button
+					type='submit'
+					class='inline-flex gap-1 justify-center items-center px-6 py-2 mx-auto text-sm rounded-full transition-all cursor-pointer bg-red text-cream hover:bg-red-accent'
+					>Actualizar perfil</button
+				>
+				<div
+					id='profile-form-message'
+					class='mt-4 h-6 text-sm font-medium text-center text-red'>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 <!-- All styling now handled by Tailwind classes -->
 
 <!-- Form submission script -->
 <script define:vars={{ PLUNK_API_KEY }}>
-  // @ts-ignore - Adding property to window
-  window.PLUNK_API_KEY = PLUNK_API_KEY;
+	// @ts-ignore - Adding property to window
+	window.PLUNK_API_KEY = PLUNK_API_KEY;
 </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('profile-form') as HTMLFormElement;
-    const messageDiv = document.getElementById('profile-form-message');
-    
-    if (!form || !messageDiv) return;
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Check if email is provided
-      const emailValue = form.email.value;
-      if (!emailValue) {
-        messageDiv.textContent = 'Error: El correo electrónico es requerido';
-        messageDiv.style.color = 'var(--red-accent)';
-        return;
-      }
-      
-      // Get form values
-      const email = emailValue.toString();
-      const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
-      const nationality = (form.elements.namedItem('nationality') as HTMLSelectElement)?.value || '';
-      
-      // Prepare data for Plunk API
-      const requestData = {
-        event: 'profile_update',
-        email: email,
-        subscribed: true,
-        data: {
-          name: name,
-          nationality: nationality
-        }
-      };
-      
-      try {
-        // Send the request to update profile
-        const response = await fetch('https://api.useplunk.com/v1/track', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // @ts-ignore - Using window property
-            'Authorization': `Bearer ${window.PLUNK_API_KEY || ''}`
-          },
-          body: JSON.stringify(requestData)
-        });
-        
-        if (response.ok) {
-          // Success
-          messageDiv.textContent = '¡Perfil actualizado con éxito!';
-          messageDiv.style.color = 'var(--red)';
-          
-          // Clear form fields except email
-          (form.elements.namedItem('name') as HTMLInputElement).value = '';
-          (form.elements.namedItem('nationality') as HTMLSelectElement).value = '';
-        } else {
-          // Handle error
-          const errorData = await response.json();
-          console.error('Update error:', errorData);
-          
-          // Show user-friendly error message
-          if (errorData.message && errorData.message.includes('Email is required')) {
-            messageDiv.textContent = 'Error: El correo electrónico es requerido';
-          } else {
-            messageDiv.textContent = `Error: ${errorData.message || 'Hubo un problema al actualizar tu perfil'}`;
-          }
-          messageDiv.style.color = 'var(--red-accent)';
-        }
-      } catch (error) {
-        // Handle network errors
-        messageDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo más tarde.';
-        messageDiv.style.color = 'var(--red-accent)';
-        console.error('Update error:', error);
-      }
-    });
-  });
+	document.addEventListener("DOMContentLoaded", () => {
+		const form = document.getElementById("profile-form") as HTMLFormElement;
+		const messageDiv = document.getElementById("profile-form-message");
+
+		if (!form || !messageDiv) return;
+
+		form.addEventListener("submit", async (e) => {
+			e.preventDefault();
+
+			// Check if email is provided
+			const emailValue = form.email.value;
+			if (!emailValue) {
+				messageDiv.textContent =
+					"Error: El correo electrónico es requerido";
+				messageDiv.style.color = "var(--red-accent)";
+				return;
+			}
+
+			// Get form values
+			const email = emailValue.toString();
+			const name =
+				(form.elements.namedItem("name") as HTMLInputElement)?.value ||
+				"";
+			const nationality =
+				(form.elements.namedItem("nationality") as HTMLSelectElement)
+					?.value || "";
+
+			// Prepare data for Plunk API
+			const requestData = {
+				event: "profile_update",
+				email: email,
+				subscribed: true,
+				data: {
+					name: name,
+					nationality: nationality,
+				},
+			};
+
+			try {
+				// Send the request to update profile
+				const response = await fetch(
+					"https://api.useplunk.com/v1/track",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							// @ts-ignore - Using window property
+							Authorization: `Bearer ${window.PLUNK_API_KEY || ""}`,
+						},
+						body: JSON.stringify(requestData),
+					}
+				);
+
+				if (response.ok) {
+					// Success
+					messageDiv.textContent = "¡Perfil actualizado con éxito!";
+					messageDiv.style.color = "var(--red)";
+
+					// Clear form fields except email
+					(
+						form.elements.namedItem("name") as HTMLInputElement
+					).value = "";
+					(
+						form.elements.namedItem(
+							"nationality"
+						) as HTMLSelectElement
+					).value = "";
+				} else {
+					// Handle error
+					const errorData = await response.json();
+					console.error("Update error:", errorData);
+
+					// Show user-friendly error message
+					if (
+						errorData.message &&
+						errorData.message.includes("Email is required")
+					) {
+						messageDiv.textContent =
+							"Error: El correo electrónico es requerido";
+					} else {
+						messageDiv.textContent = `Error: ${errorData.message || "Hubo un problema al actualizar tu perfil"}`;
+					}
+					messageDiv.style.color = "var(--red-accent)";
+				}
+			} catch (error) {
+				// Handle network errors
+				messageDiv.textContent =
+					"Error de conexión. Por favor, intenta de nuevo más tarde.";
+				messageDiv.style.color = "var(--red-accent)";
+				console.error("Update error:", error);
+			}
+		});
+	});
 </script>

@@ -3,18 +3,41 @@ import { Image } from "astro:assets";
 import Logo from "./../assets/ottagua-logo.svg";
 ---
 
-<header class="nav-header bg-red w-full py-3 px-4 fixed top-0 z-10 shadow-sm rounded-b-3xl">
-	<div class="flex justify-between items-center w-full max-w-[1240px] mx-auto">
-		<a href='/' aria-label='Home Page' class="flex-shrink-0">
-			<Image src={Logo} alt='Ottagua Logo' width={120} height={32} class="w-[120px] h-auto" />
+<header
+	class='fixed top-0 z-10 px-4 py-3 w-full rounded-b-3xl shadow-sm nav-header bg-red'>
+	<div
+		class='flex justify-between items-center w-full max-w-[1240px] mx-auto'>
+		<a href='/' aria-label='Home Page' class='flex-shrink-0'>
+			<Image
+				src={Logo}
+				alt='Ottagua Logo'
+				width={120}
+				height={32}
+				class='w-[120px] h-auto'
+			/>
 		</a>
 		<nav>
-			<ul class="flex gap-4 items-center">
+			<ul class='flex gap-4 items-center'>
 				<li>
-					<a href='https://archive.ottagua.com/' class="text-cream no-underline text-sm hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4 transition-colors duration-200">Posts Pasados</a>
+					<a
+						href='/blog'
+						class='text-sm no-underline transition-colors duration-200 text-cream hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4'
+						>Posts</a
+					>
 				</li>
 				<li>
-					<a href='/#signup' class="bg-cream text-red py-1.5 px-4 rounded-full text-sm hover:bg-cream/90 hover:shadow-md transition-all duration-200 no-underline">Suscríbete</a>
+					<a
+						href='/about'
+						class='text-sm no-underline transition-colors duration-200 text-cream hover:text-white hover:underline hover:decoration-2 hover:underline-offset-4'
+						>About</a
+					>
+				</li>
+				<li>
+					<a
+						href='/#signup'
+						class='px-4 py-1.5 text-sm no-underline rounded-full transition-all duration-200 bg-cream text-red hover:bg-cream/90 hover:shadow-md'
+						>Suscríbete</a
+					>
 				</li>
 			</ul>
 		</nav>

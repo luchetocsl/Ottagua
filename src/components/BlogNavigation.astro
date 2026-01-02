@@ -28,19 +28,20 @@ const prevPost =
 const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 ---
 
-<div class='my-4 pt-2 mx-auto max-w-[1240px] px-4'>
+<div class='my-4 pt-2 mt-32 mx-auto max-w-[1240px]'>
 	<div class='flex justify-between items-end'>
 		{
 			prevPost && (
 				<a
 					href={`/blog/${slugify(prevPost.data.slug || prevPost.slug)}/`}
-					class='flex items-center no-underline py-0.5 max-w-[35%] hover:text-red-accent'>
-					<div class='text-xs text-red mx-1'>←</div>
+					class='flex items-center no-underline py-0.5 max-w-[35%]
+					w-[200px] text-black hover:text-red-accent'>
+					<div class='mx-1 text-xs text-black'>←</div>
 					<div class='flex-1 text-left'>
-						<div class='text-red-accent text-[10px] mb-0.5'>
+						<div class='text-black text-[10px] mb-0.5'>
 							Artículo anterior
 						</div>
-						<div class='text-red text-xs font-normal leading-tight'>
+						<div class='text-xs font-normal leading-tight text-black'>
 							{prevPost.data.title}
 						</div>
 					</div>
@@ -48,28 +49,28 @@ const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 			)
 		}
 
-		{!prevPost && <div class='w-[35%]' />}
+		{!prevPost && <div class='w-[35%] w-[200px]' />}
 
 		<a
 			href='/blog/'
-			class='flex justify-center items-end no-underline pb-0.5 w-1/6 hover:text-red-accent'>
-			<div class='text-red font-normal text-[10px]'>Volver al blog</div>
+			class='flex justify-center items-end pb-0.5 w-1/6 text-black no-underline hover:text-red-accent'>
+			<div class='text-black font-normal text-[10px]'>Volver al blog</div>
 		</a>
 
 		{
 			nextPost && (
 				<a
 					href={`/blog/${slugify(nextPost.data.slug || nextPost.slug)}/`}
-					class='flex items-center no-underline py-0.5 max-w-[35%] hover:text-red-accent'>
+					class='flex items-center no-underline py-0.5 max-w-[35%] w-[200px] text-black hover:text-red-accent'>
 					<div class='flex-1 text-right'>
-						<div class='text-red-accent text-[10px] mb-0.5'>
+						<div class='text-black text-[10px] mb-0.5'>
 							Artículo siguiente
 						</div>
-						<div class='text-red text-xs font-normal leading-tight'>
+						<div class='text-xs font-normal leading-tight text-black'>
 							{nextPost.data.title}
 						</div>
 					</div>
-					<div class='text-xs text-red mx-1'>→</div>
+					<div class='mx-1 text-xs text-black'>→</div>
 				</a>
 			)
 		}
