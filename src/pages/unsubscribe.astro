@@ -1,113 +1,180 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Import environment variables
 const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 ---
 
-<BaseLayout title="Cancelar suscripción | Ottagua">
-  <main class="unsubscribe-page">
-    <h1>Cancelar suscripción</h1>
-    <p>Lamentamos que quieras cancelar tu suscripción. Por favor, ingresa tu correo electrónico para confirmar.</p>
-    
-    <div class="form-container">
-      <form class="unsubscribe-form" action="https://api.useplunk.com/v1/contacts/unsubscribe" method="post">
-        <input type="hidden" name="redirect" value="/" />
-        <input type="hidden" name="api_key" value={PLUNK_API_KEY} />
-        <div class="form-group">
-          <label for="email">Correo electrónico</label>
-          <input type="email" name="email" placeholder="tu@email.com" required />
-        </div>
-        <button type="submit" class="submit-button">Cancelar suscripción</button>
-      </form>
-    </div>
-  </main>
+<script define:vars={{ PLUNK_API_KEY }}>
+	// @ts-ignore - Adding property to window
+	window.PLUNK_API_KEY = PLUNK_API_KEY;
+</script>
+
+<BaseLayout title='Cancelar suscripción | Ottagua'>
+	<main class='unsubscribe-page'>
+		<h1>Cancelar suscripción</h1>
+		<p>
+			Lamentamos que quieras cancelar tu suscripción. Por favor, ingresa
+			tu correo electrónico para confirmar.
+		</p>
+
+		<div class='form-container'>
+			<form class='unsubscribe-form' id='unsubscribe-form'>
+				<input type='hidden' name='redirect' value='/' />
+				<div class='form-group'>
+					<label for='email'>Correo electrónico</label>
+					<input
+						type='email'
+						name='email'
+						placeholder='tu@email.com'
+						required
+					/>
+				</div>
+				<button type='submit' class='submit-button'
+					>Cancelar suscripción</button
+				>
+			</form>
+		</div>
+	</main>
 </BaseLayout>
 
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const form = document.getElementById(
+			"unsubscribe-form"
+		) as HTMLFormElement;
+		if (!form) return;
+
+		form.addEventListener("submit", async (e) => {
+			e.preventDefault();
+
+			const emailValue = (
+				form.elements.namedItem("email") as HTMLInputElement
+			)?.value;
+			if (!emailValue) {
+				alert("Error: El correo electrónico es requerido");
+				return;
+			}
+
+			try {
+				const response = await fetch(
+					"https://next-api.useplunk.com/v1/track",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							// @ts-ignore - Using window property
+							Authorization: `Bearer ${window.PLUNK_API_KEY || ""}`,
+						},
+						body: JSON.stringify({
+							event: "unsubscribe",
+							email: emailValue,
+							subscribed: false,
+						}),
+					}
+				);
+
+				if (response.ok) {
+					window.location.href = "/";
+					return;
+				}
+
+				const errorData = await response.json().catch(() => ({}));
+				alert(
+					`Error: ${errorData?.message || "Hubo un problema al procesar tu solicitud"}`
+				);
+			} catch (error) {
+				alert(
+					"Error de conexión. Por favor, intenta de nuevo más tarde."
+				);
+				console.error("Unsubscribe error:", error);
+			}
+		});
+	});
+</script>
+
 <style>
-  .unsubscribe-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-xl) var(--space-md);
-    min-height: 60vh;
-  }
+	.unsubscribe-page {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-xl) var(--space-md);
+		min-height: 60vh;
+	}
 
-  h1 {
-    color: var(--red);
-    margin-bottom: var(--space-md);
-    text-align: center;
-  }
+	h1 {
+		color: var(--red);
+		margin-bottom: var(--space-md);
+		text-align: center;
+	}
 
-  p {
-    color: var(--red);
-    max-width: 30rem;
-    text-align: center;
-    margin-bottom: var(--space-lg);
-    font-size: 1rem;
-    line-height: 1.5;
-  }
+	p {
+		color: var(--red);
+		max-width: 30rem;
+		text-align: center;
+		margin-bottom: var(--space-lg);
+		font-size: 1rem;
+		line-height: 1.5;
+	}
 
-  .form-container {
-    max-width: 24.444rem;
-    width: 100%;
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    border: 1px solid var(--red);
-    background-color: var(--cream);
-  }
+	.form-container {
+		max-width: 24.444rem;
+		width: 100%;
+		border-radius: var(--radius-lg);
+		padding: var(--space-lg);
+		border: 1px solid var(--red);
+		background-color: var(--cream);
+	}
 
-  .unsubscribe-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
+	.unsubscribe-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+	}
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+	}
 
-  label {
-    font-size: var(--font-sm);
-    color: var(--red);
-  }
+	label {
+		font-size: var(--font-sm);
+		color: var(--red);
+	}
 
-  input {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--red);
-    border-radius: 1.5rem;
-    font-size: var(--font-sm);
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
+	input {
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--red);
+		border-radius: 1.5rem;
+		font-size: var(--font-sm);
+		outline: none;
+		transition: border-color 0.2s ease;
+	}
 
-  input:focus {
-    border-color: var(--red-accent);
-  }
+	input:focus {
+		border-color: var(--red-accent);
+	}
 
-  .submit-button {
-    background-color: var(--red);
-    color: var(--cream);
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 1.5rem;
-    cursor: pointer;
-    font-size: var(--font-sm);
-    transition: background-color 0.2s ease;
-  }
+	.submit-button {
+		background-color: var(--red);
+		color: var(--cream);
+		padding: 0.5rem 1.5rem;
+		border: none;
+		border-radius: 1.5rem;
+		cursor: pointer;
+		font-size: var(--font-sm);
+		transition: background-color 0.2s ease;
+	}
 
-  .submit-button:hover {
-    background-color: var(--red-accent);
-  }
+	.submit-button:hover {
+		background-color: var(--red-accent);
+	}
 
-  .form-message {
-    text-align: center;
-    font-size: var(--font-sm);
-    margin-top: var(--space-sm);
-  }
+	.form-message {
+		text-align: center;
+		font-size: var(--font-sm);
+		margin-top: var(--space-sm);
+	}
 </style>
-
-
