@@ -4,20 +4,26 @@ import ThankYouSteps from "../components/ThankYouSteps.astro";
 import EmailExplanation from "../components/EmailExplanation.astro";
 import ProfileUpdateForm from "../components/ProfileUpdateForm.astro";
 
-const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
+const PLUNK_API_KEY = import.meta.env.PLUNK_API_KEY;
 ---
 
 <BaseLayout>
-	<div class="text-red flex justify-start items-center flex-col gap-12 max-w-6xl w-full px-4 py-8 mx-auto">
-		<div class="text-center max-w-xl w-full">
-			<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-2 text-red max-w-prose mx-auto">¡Gracias por suscribirte!</h1>
-			<p class="text-center mb-4 text-xl text-red">Aprovecha al máximo tu suscripción</p>
+	<div
+		class='flex flex-col gap-12 justify-start items-center px-4 py-8 mx-auto w-full max-w-6xl text-red'>
+		<div class='w-full max-w-xl text-center'>
+			<h1
+				class='mx-auto mb-2 max-w-prose text-5xl font-bold text-center md:text-6xl lg:text-7xl text-red'>
+				¡Gracias por suscribirte!
+			</h1>
+			<p class='mb-4 text-xl text-center text-red'>
+				Aprovecha al máximo tu suscripción
+			</p>
 		</div>
-		
+
 		<EmailExplanation />
-		
+
 		<ThankYouSteps />
-		
+
 		<ProfileUpdateForm PLUNK_API_KEY={PLUNK_API_KEY} />
 	</div>
 </BaseLayout>
@@ -28,7 +34,7 @@ const PLUNK_API_KEY = import.meta.env.PUBLIC_PLUNK_API_KEY;
 		.gap-12 {
 			gap: 2rem;
 		}
-		
+
 		.text-4xl {
 			font-size: 1.75rem;
 		}
