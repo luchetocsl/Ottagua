@@ -26,7 +26,7 @@ const {
 <BaseLayout>
 	<main class='w-full'>
 		<!-- Full-width hero image container -->
-		<div class='overflow-hidden mb-8 w-full max-w-full'>
+		<div class='w-full max-w-full mb-8 overflow-hidden'>
 			<div class='max-w-[1240px] mx-auto px-4 flex justify-center'>
 				{
 					heroImage && (
@@ -44,7 +44,7 @@ const {
 
 		<!-- Content container with 1240px max width -->
 		<div class='max-w-[1240px] mx-auto px-4'>
-			<article class='mx-auto max-w-prose leading-7 text-black'>
+			<article class='mx-auto leading-7 text-black max-w-prose'>
 				<div class='flex flex-col items-start mb-8'>
 					<h1
 						class='mb-4 text-4xl font-bold leading-tight text-black'>
@@ -69,22 +69,18 @@ const {
 					</div>
 					{
 						tags?.length ? (
-							<div class='mt-3 flex flex-wrap gap-2'>
+							<div class='flex flex-wrap gap-2 mt-3'>
 								{tags.map((tag) => (
-									<span class='px-3 py-1 text-xs font-medium text-black rounded-full border border-black/15 bg-cream/60'>
+									<span class='px-3 py-1 text-xs font-medium text-black border rounded-full border-black/15 bg-cream/60'>
 										{tag}
 									</span>
 								))}
 							</div>
 						) : null
 					}
-					<p
-						class='mt-4 leading-relaxed text-black opacity-80 text-md'>
-						{summary ?? description}
-					</p>
 				</div>
 
-				<div class='text-black prose'>
+				<div class='prose text-black'>
 					<slot />
 				</div>
 			</article>
@@ -198,6 +194,16 @@ const {
 		border: none;
 		border-top: 2px solid var(--red, #f80b01);
 		margin: 2.5em 0;
+	}
+
+	.prose iframe[src*="youtube.com"],
+	.prose iframe[src*="youtube-nocookie.com"] {
+		display: block;
+		width: min(100%, 800px);
+		max-width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		margin: 2rem auto;
 	}
 
 	/* Add more blog-specific styles as needed */
