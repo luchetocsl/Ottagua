@@ -82,9 +82,15 @@
 					// Redirect to the gracias page
 					window.location.href = "/gracias";
 				} else {
-					// Handle error
-					const errorData = await response.json();
-					console.error("Submission error:", errorData);
+					const contentType =
+						response.headers.get("content-type") || "";
+					const errorData = contentType.includes("application/json")
+						? await response.json()
+						: { message: await response.text() };
+					console.error("Submission error:", {
+						status: response.status,
+						body: errorData,
+					});
 
 					messageDiv.textContent = `Error: ${errorData.message || "Hubo un problema al procesar tu solicitud"}`;
 					messageDiv.style.color = "var(--red-accent)";

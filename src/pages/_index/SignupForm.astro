@@ -75,8 +75,15 @@
 					form.reset();
 					window.location.href = "/gracias";
 				} else {
-					const errorData = await response.json();
-					console.error("Submission error:", errorData);
+					const contentType =
+						response.headers.get("content-type") || "";
+					const errorData = contentType.includes("application/json")
+						? await response.json()
+						: { message: await response.text() };
+					console.error("Submission error:", {
+						status: response.status,
+						body: errorData,
+					});
 
 					alert(
 						`Error: ${errorData.message || "Hubo un problema al procesar tu solicitud"}`,
