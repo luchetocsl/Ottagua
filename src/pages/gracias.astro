@@ -3,8 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ThankYouSteps from "../components/ThankYouSteps.astro";
 import EmailExplanation from "../components/EmailExplanation.astro";
 import ProfileUpdateForm from "../components/ProfileUpdateForm.astro";
-
-const PLUNK_API_KEY = import.meta.env.PLUNK_API_KEY;
 ---
 
 <BaseLayout>
@@ -24,7 +22,7 @@ const PLUNK_API_KEY = import.meta.env.PLUNK_API_KEY;
 
 		<ThankYouSteps />
 
-		<ProfileUpdateForm PLUNK_API_KEY={PLUNK_API_KEY} />
+		<ProfileUpdateForm />
 	</div>
 </BaseLayout>
 
