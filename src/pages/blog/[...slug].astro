@@ -1,12 +1,14 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 import { slugify } from "../../utils/slug";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
+
 	return posts.map((post) => {
-		const slug = slugify(post.data.slug || post.slug);
+		const slug = slugify(post.data.slug || post.id);
+
 		return {
 			params: { slug },
 			props: {
@@ -23,8 +25,8 @@ interface Props {
 }
 
 const { post, allPosts } = Astro.props;
-const { Content } = await post.render();
-const currentSlug = slugify(post.data.slug || post.slug);
+const { Content } = await render(post);
+const currentSlug = slugify(post.data.slug || post.id);
 ---
 
 <BlogPost {...post.data} currentSlug={currentSlug} allPosts={allPosts}>
